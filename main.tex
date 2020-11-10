@@ -1,14 +1,100 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+% For things that should, or shouldn't appear in drafts or final
+% version.
+\newif\ifanonymized\anonymizedfalse  % change to '\anonymizedtrue'
+                                     % for anonymous submission
+\newif\ifroughdraft\roughdrafttrue   % change to '\roughdraftfalse'
+                                     % for versions to be submitted
 
-\title{euphemism-detection}
-\author{zackw }
+% TeX black magic is isolated in preamble.tex.
+\input preamble
+
+% Allows \includegraphics{foo} instead of \includegraphics{figures/foo}.
+\graphicspath{{figures/}}
+
+% Notes to self and others.  All disappear in the final.
+\ifroughdraft
+\newcommand{\kibitz}[3]
+  {\textcolor[HTML]{#1}{[\textbf{#2}\ifx&#3&\else: \textit{#3}\fi]}}
+\else
+\newcommand{\kibitz}[3]{}
+\fi
+\newcommand{\todo}[1]{\kibitz{e7298a}{TODO}{#1}}
+\newcommand{\needcite}[1]{\kibitz{e7298a}{citation needed}{#1}}
+\newcommand{\needxref}[1]{\kibitz{e7298a}{xref needed}{#1}}
+
+\newcommand{\GF}[1]{\kibitz{1b9e77}{GF}{#1}}
+\newcommand{\NC}[1]{\kibitz{d95f02}{NC}{#1}}
+\newcommand{\SB}[1]{\kibitz{7570b3}{SB}{#1}}
+\newcommand{\WZ}[1]{\kibitz{66a61e}{WZ}{#1}}
+\newcommand{\ZW}[1]{\kibitz{e6ab02}{ZW}{#1}}
+
+\let\needref=\needxref
+\let\nicolasc=\NC
+
+% IEEEtran.cls needs the title and author list defined _before_
+% \begin{document}.
+\title{Euphemism Detection}
+\author{%
+\ifanonymized
+\IEEEauthorblockN{Anonymous submission}
+\else
+\IEEEauthorblockN{Wanzheng Zhu}
+\IEEEauthorblockA{University of Illinois}
+\and
+\IEEEauthorblockN{Zachary Weinberg}
+\IEEEauthorblockA{University of Massachusetts---Amherst}
+\and
+\IEEEauthorblockN{Suma Bhat}
+\IEEEauthorblockA{University of Illinois}
+\and
+\IEEEauthorblockN{Giulia Fanti}
+\IEEEauthorblockA{Carnegie Mellon University}
+\and
+\IEEEauthorblockN{Nicolas Christin}
+\IEEEauthorblockA{Carnegie Mellon University}
+\fi}
 \date{November 2020}
 
 \begin{document}
 
 \maketitle
 
+\begin{abstract}
+The abstract goes here.
+\end{abstract}
+
 \section{Introduction}
+
+Outline the paper here.
+
+% Dummy citation to prevent LaTeX errors; remove after we have at
+% least one real citation.
+\cite{dummy}
+
+% IEEE specifies use of \section* for acknowledgments.
+\section*{Acknowledgments}
+\ifanonymized
+
+Omitted for anonymous submission.
+
+\else
+
+Acknowledgments go here.
+
+\fi
+
+% In rough-draft mode, start the bibliography on a new page, to make it
+% more obvious how close we are to the page limit.
+% Oakland 2020 page limit is 13 pages of main text + 5 pages of
+% bibliography and appendices.
+\ifroughdraft\clearpage\fi
+
+% activate tweaks from main.bib
+\bstctlcite{ieeetran:tweaks}
+
+% References should always be sorted alphabetically, I don't care
+% if IEEE's official style guide says otherwise.
+\bibliographystyle{IEEEtranS}
+\bibliography{main}
 
 \end{document}

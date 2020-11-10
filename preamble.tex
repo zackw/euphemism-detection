@@ -1,0 +1,92 @@
+% Must be loaded before anything else, not even the document class.
+\RequirePackage[l2tabu,orthodox]{nag}
+
+% Code below assumes ordinary pdflatex with pdf output.
+\RequirePackage{iftex}
+\RequirePDFTeX
+
+% The PDF version must be set before anyone has a chance to write data
+% to the PDF.  PDF/A conformance level 2 specifies PDF version 1.7.
+\pdfminorversion=7
+
+\documentclass[conference\ifroughdraft,draft\fi]{IEEEtran}
+
+% These packages must be loaded immediately after \documentclass, in
+% this order.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[USenglish]{babel}
+\usepackage{lmodern}   % backstop to ensure no OT1 fonts are used
+\usepackage{newtxtext} % current best font package for Times body text
+\usepackage{amsmath}   % needs to be loaded before math fonts
+\usepackage{newtxmath} % math fonts matching newtxtext
+\usepackage[final]{microtype} % must be loaded after all fonts
+
+% These packages can be loaded in any order, so they're alphabetical.
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage[final]{graphicx}
+\usepackage{xcolor}
+
+% These packages must be loaded after all other packages, in this
+% order.
+% hyperxmp temporarily disabled as it appears to be incompatible with
+% IEEEtran.cls.  Bl34h.
+\usepackage[hyphens]{url}
+%\usepackage{hyperxmp}
+\usepackage[
+  bookmarksnumbered,
+  colorlinks=false,
+  final,
+  hidelinks,
+  pdfa,
+%  pdfapart=2,
+%  pdfaconformance=u,
+  pdflang=en,
+  pdftex,
+  unicode
+]{hyperref}
+\usepackage{cleveref}
+\usepackage{bookmark}
+
+% Bug fixes.
+\makeatletter
+
+% We do not need to be reminded to do things that are done for us
+% automatically.
+\def\@IEEEconsolenoticeconference{}
+
+\makeatother
+
+% Bibliography configuration.
+
+% Use smaller fonts for the bibliography
+% Under no circumstances complain about underfull hboxes in the
+% bibliography, since it's usually impossible to fix them.
+% Make the \itemsep flexible so TeX can fill up bib pages neatly.
+\newcommand\BIBdecl{%
+   \footnotesize
+   \renewcommand\UrlFont{\scriptsize}
+   \hfuzz 2pt
+   \emergencystretch 2em
+   \hbadness 10000
+   \setlength\itemsep{0.5ex plus 0.5ex minus 0.5ex}
+}
+
+
+% As of TeX Live 2016 (the version used on arXiv), inputenc doesn't
+% set the space factor of Unicode close curly quotes correctly.
+% (In TeX Live 2020, \sfcode\textquoteright is correct, but
+% \sfcode\textquotedblright is still wrong.)
+\AtBeginDocument{%
+  \sfcode\csname\encodingdefault\string\textquotedblright\endcsname=0%
+  \sfcode\csname\encodingdefault\string\textquoteright\endcsname=0%
+}
+
+% HTML listings look strange with text protrusion.
+% Old versions of microtype (in particular, the version on arXiv)
+% don't define alltext-nott.
+\DeclareMicrotypeSet[protrusion]{not-tt}{
+  family = {rm*, sf*}
+}
+\UseMicrotypeSet[protrusion]{not-tt}
