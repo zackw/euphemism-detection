@@ -15,18 +15,19 @@ We next discuss in detail our proposed euphemism detection approach in Section \
 	\label{fig:model_det}
 \end{figure*}
 
-The challenge to euphemism detection is that euphemisms are typically innocent-looking, and their usage in a sentence is often natural and grammatical. %lies in the inability to identify them without having an explicit mapping between the words and their implied meanings. 
-For instance, the words used as euphemisms with drug meanings tend to be words used in common parlance. 
+% The challenge to euphemism detection is that euphemisms are typically innocent-looking, and their usage in a sentence is often natural and grammatical. %lies in the inability to identify them without having an explicit mapping between the words and their implied meanings. 
+% For instance, the words used as euphemisms with drug meanings tend to be words used in common parlance. 
 %For example, ``blueberry'' could either mean a fruit, or marijuana depending on the context. Without the context, deciding whether a word is a euphemism or not would be impossible even for human experts. %For instance, \eg, 'one ounce of \textit{cheese}'). 
 %\nicolasc{we said this already in the introduction, almost verbatim, do we need to repeat it here? by the same token, the proposed model (section III)  is useful but do we need to re-define euphemism detection and identification since we defined them in the introduction already?}
 % Answer to Nicolas: changed it to a shorter version. 
 
-Human experts (or even non-experts to a large extent) typically rely on information from the context to disambiguate the meaning of polysemous words. With this in mind,
-much contemporary work on  euphemism detection has mainly relied on the implicit contextual information available in static word embeddings (\eg, word2vec) in combination with network analysis (\eg, community detection) \cite{taylor2017surfacing,magu2018determining}, using sentiment lexicons \cite{felt2020recognizing}, and relying on semantic comparison across corpora \cite{yuan2018reading}. 
-However, the use of static word embeddings, which provides a single representation for a given word (without accounting for its polysemy), leads to an ineffective modeling of the acquired polysemy of the euphemisms. 
+% Human experts (or even non-experts to a large extent) typically rely on context to disambiguate the meaning of polysemous words. With this in mind,
+% much contemporary work on  euphemism detection has mainly relied on the implicit contextual information available in static word embeddings (\eg, word2vec) in combination with network analysis (\eg, community detection) \cite{taylor2017surfacing,magu2018determining}, using sentiment lexicons \cite{felt2020recognizing}, and relying on semantic comparison across corpora \cite{yuan2018reading}. 
+% However, the use of static word embeddings, which provides a single representation for a given word (without accounting for its polysemy), leads to an ineffective modeling of the acquired polysemy of the euphemisms. 
 
-Going beyond the approaches in related prior work, we propose to detect euphemisms by explicitly harnessing their contextual information. Toward this, we formulate the problem as an unsupervised fill-in-the-mask problem and solve it using the idea of a Masked Language Model (MLM), an important modeling idea behind large pre-tained language models such as BERT \cite{devlin2019bert}. 
-
+% Going beyond the approaches in related prior work, 
+We propose to detect euphemisms by explicitly harnessing their contextual information. 
+To this end, we formulate the problem as an unsupervised fill-in-the-mask problem and solve it using the idea of a Masked Language Model (MLM), an important modeling idea behind large pre-tained language models such as BERT \cite{devlin2019bert}. 
 We carry out our proposed approach to euphemism detection in the following three stages (represented  in Figure~\ref{fig:model_det}): 
 1) Extracting contextual information, 
 2) Filtering out noisy masked sentences, and 
@@ -105,7 +106,7 @@ The key novelty lies in how we formulate the problem and solve it without additi
 
 %To tackle the aforementioned challenges, a natural solution would be to avail a euphemism inventory---a list with each euphemism mapped to each target keyword---and then check whether the word is used euphemistically or not. % costly to collect the labels for every dataset. 
 We address the \textit{resource challenge} with a self-supervised learning scheme. 
-Self-supervised learning is a form of unsupervised learning where the data provides the supervision to automatically extract the training instances and their labels from an unlabeled raw text corpus. It permits scaling the large amount of 
+Self-supervised learning is a form of unsupervised learning where the data provides the supervision to automatically extract the training instances and their labels from an unlabeled raw text corpus. This is done by using part of a data (\eg, a sentence without a specific word), in order to predict   the remaining part of the data (\eg, the specific word of the sentence). This approach permits us to harness the abundant and readily available unlabeled data and go beyond expensive human labelling, and is especially useful for our task.  
 More specifically, we extract all sentences that include the target keywords (\eg, cocaine, marijuana, heroin), mask the target keywords, and consider the masked sentences as training instances. 
 This permits us to automatically construct a labeled dataset, where the instances are the masked sentences and their respective target keywords are labels. 
 

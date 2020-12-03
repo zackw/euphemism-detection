@@ -2,57 +2,8 @@
 % UTF-8 encoding
 \section{Introduction}
 \label{sec:intro}
-% Nicolas' proposal below %
-Jordan is a content moderator working for a large social media company. 
-The hours are long, 
-the pay low, 
-and the job, albeit extremely important, 
-is challenging and often frustrating. 
-Jordan frequently has to deal with highly inappropriate content, 
-and is constantly playing ``whack-a-mole'':
-the sheer volume of content to moderate demands some level of automation, such as ban-lists. 
-These ban-lists are created from knowledge accumulated by the content moderation teams. 
-However, 
-as soon as a set of terms is banned, 
-offenders adapt by using euphemisms or repurposed slang to evade the filters. 
 
-This story is far from fictional: 
-a series of reports published by The Verge in 2019 \cite{TheVerge:Mods, TheVerge:Mods2} described the severe hardships online content moderators face, 
-leading, 
-in some cases, to post-traumatic stress disorder, 
-and called for better treatment of these employees---while noting 
-that higher levels of automation remain highly challenging 
-to design and deploy. 
-Along the same lines, 
-reports such as Ofcom's~\cite{Ofcom:AI2019}
-noted the limitations of simple automated approaches, 
-such as static filters, due to language evolution, 
-including rapidly-evolving slang. 
-For example, Table~\ref{table:example1} illustrates euphemisms used to describe sensitive topics such as drug use and weapons. 
-
-Our work tackles the thorny problem of content moderation 
-by focusing on the scenario of a content moderator 
-who has a list of target keywords that they wish to moderate 
-(\eg, narcotics discussion in a family-oriented forum).  
-The moderator's goal is to automatically identify euphemisms for these keywords and understand their meaning. 
-% text that is referring to the target keywords, even if users are only using euphemisms for the keywords.
-% automated {\bf euphemism detection} and {\bf euphemism identification}.
-% We consider a setting where 
-We split this problem into two subtasks:
-\textbf{Euphemism detection} refers to identifying words 
-that are used to signify \emph{any} of the target keywords, 
-without necessarily recovering the meaning of the euphemism. 
-For instance, if our target keywords are proper drug names 
-(\eg, marijuana, heroin, cocaine), a euphemism detector would return a list of euphemistic words (\eg, pot, coke, crack,  dope).
-Table~\ref{table:example2} presents some euphemisms of the target keywords.  
-
-\textbf{Euphemism identification} instead takes a euphemism as input and identifies its meaning. 
-In our previous example, this would map pot to marijuana, coke to cocaine, etc. 
-Although these problems may be of independent interest, we envision a pipeline where moderators make use of both parts in succession to identify problematic words and understand their meaning. 
-Critically, we wish to tackle these problems in a fully-unsupervised manner. 
-
-% in adversarial environments.
-%%% END Nicolas' preamble -- we can probably delve into the more scientific part from here.
+%%% Nicolas' notes on the intro:
 %Euphemisms, as an instrument to mask intent, have long been used throughout history. 
 %For example, a rich lexicon of drug slang has developed over time, with entire communities subscribing to benign sounding words that allude to names of drugs.
 % tons of content online, and increasing
@@ -62,53 +13,115 @@ Critically, we wish to tackle these problems in a fully-unsupervised manner.
 % time is of the essence---trends can be started and snowball out of control quickly, not much time to ''learn'' for humans
 %Highlight the importance of doing both euphemism detection and euphemism identification. 
 
+In recent years,
+large social media companies have been hiring small armies of ``content moderators''
+to prevent conversations on their platforms 
+that they deem to be inappropriate.
+The hours are long, 
+the pay low, 
+and the firehose of humanity's worst impulses, endless.
+In 2019, The Verge reported on the emotional toll this work exacts,
+leading in some cases
+to post-traumatic stress disorder~\cite{TheVerge:Mods, TheVerge:Mods2}.
 
+Automation is an obvious way to assist content moderators.
+Ideally, they would be able to make a decision once
+and have it applied consistently to all similar content.
+One standard form of automated moderation is ``ban-lists'' of forbidden words.
+These are easy to implement, and define a clear-cut policy.
+However, they are also easy to evade:
+as soon as terms are added to a ban-list,
+the offenders will notice
+and adapt by inventing euphemisms to evade the filters~\cite{Ofcom:AI2019}.
+Euphemisms are frequently words with other, innocuous meanings
+so they cannot be filtered unconditionally;
+they must be interpreted in context.
+To illustrate the problem,
+Table~\ref{table:example2} gives many examples of euphemisms
+for a few terms that are frequently forbidden.
+Almost all of the euphemisms have innocuous meanings.
+Table~\ref{table:example1} shows how a few of the euphemisms
+would be used in context, demonstrating that
+a human reader can often tell that a euphemistic meaning is intended
+even if they do not know exactly what the meaning is.
 
-\begin{table}[ht!]
-	\centering
-	\small
-	\caption{Example sentences with euphemisms (highlighted in bold). ``Gats'' in the first example means machine guns; The second example shows the usage of ``coke'' for ``cocaine''; In the third and the fourth example, ``pot'' and ``blueberry'' are used to mean ``marijuana''; ``Girlfriend experience'' in the fifth example refers to a specific prostitution service. }
-	\begin{tabular}{p{0.46\textwidth}}
-		\toprule
-		1. I had to shut up: the dealers had \textbf{gats}, my boys didn't. \\ 
-		2. For all vendors of \textbf{coke}, it seems pretty obvious that it is not as pure as they market it. \\
-		3. I feel really good and warm behind the eyes. It`s not something i've felt before on \textbf{pot} alone to this degree. \\
-		4. You can get an ounce of this \textbf{blueberry} kush for like \$300 and it's insane. \\
-		5. I'm looking for the \textbf{girlfriend experience}, without having to deal with an actual girlfriend. \\
-		\bottomrule
-	\end{tabular}
-	\label{table:example1}
-\end{table}
-
+We present techniques for automated assistance
+with two tasks related to ban-list maintenance.
+Our algorithm for \textbf{euphemism detection}
+takes as input a set of \textit{target keywords} referring to forbidden topics
+and produces a set of \textit{candidate euphemisms}
+that may signify the same concept as one of the target keywords,
+without identifying which one.
+\textbf{Euphemism identification} takes a single euphemism as input
+and identifies its meaning.
+Each algorithm may be of independent interest,
+but we envision their use in a pipeline
+where moderators apply both in succession
+to identify new euphemisms and understand their meaning.
+For instance, if the target keywords are formal drug names 
+(\eg, marijuana, heroin, cocaine),
+euphemism detection might find common slang names for these drugs
+(\eg, pot, coke, crack,  dope)
+and euphemism identification could then associate each euphemism
+with the corresponding formal name
+(\eg, $\text{pot} \longrightarrow \text{marijuana}$,
+$\text{coke, crack} \longrightarrow \text{cocaine}$,
+$\text{dope} \longrightarrow \text{heroin}$).
+Our algorithms operate in a fully unsupervised manner,
+requiring no manual annotation of text
+or parameter tuning.
 
 \begin{table*}[t!]
 	\centering
 	\small
-	\caption{Examples of euphemisms. Each target keyword is usually associated with multiple euphemisms.}
-	\begin{tabular}{p{0.1\textwidth}p{0.15\textwidth}p{0.65\textwidth}}
+	\caption{Examples of the variety of euphemisms associated with target keywords in commonly forbidden categories.}
+	\begin{tabular}{llp{0.65\textwidth}}
 		\toprule
-		\multicolumn{1}{c}{\textbf{Category}} & \multicolumn{1}{c}{\textbf{Target Keywords}} &  \multicolumn{1}{c}{\textbf{Euphemisms}} \\
+		\multicolumn{1}{c}{\textbf{Category}} & \multicolumn{1}{c}{\textbf{Target Keyword}} & \multicolumn{1}{c}{\textbf{Euphemisms}} \\
 		\midrule
-		\centering{Drug} & \centering Marijuana & Weed, Pot, Blueberry, Popcorn, Green, Gold, Kush, Smoke, Shrimp, Root, Blue Jeans, Dirt Grass, Blue Cheese, Sweet Lucy, Texas Tea, Young Girls, ... \\
-		\midrule
-		\centering{Drug} & \centering Methamphetamine & Ice, Clear, Dunk, Gifts, Girls, Glass, Nails, One Pot, Shaved Ice, Shiny Girl, Yellow Cake, ... \\
-		\midrule
-		\centering{Drug} & \centering Heroin & Avocado, Ballot, Beast, Cheese, Chip, Down, Downtown, Goat, Pants, Sheep, Shirts, Shoes, Bad Seed, Big Bag, Big H, Brown Crystal, Golden Girl,  Hard Candy, Mexican Horse, Nice and Easy, White Nurse, ... \\
-		\midrule
-		\centering{Weapon} & \centering Gun, Firearm & 9, Bap, BFG, Boom Stick, Burner, Chopper, Cuete, Gat, Gatt, Hardware, Heater, Mac, Nine, Piece, Roscoe, Strap, Fire Stick, Ghost Load, Pocket Rocket, ... \\
-		\midrule
-		\centering{Weapon} & \centering Bullet & Ammo, Cap, Cop Killer, Lead, ... \\
-		\midrule
-		\centering{Sexuality} & \centering Breast & Bazoom, Boob, Lungs, Na-na, Puppies, Tits, Yabo, ...\\
-		\midrule
-		\centering{Sexuality} & \centering Prostitution & Hook, Poon, Whore, Call Girl, Girlfriend Experience, Working Girl, ... \\
-		\bottomrule
+                                 & Marijuana    & blue cheese, blue jeans, blueberry, dirt grass, gold, green, kush, popcorn, pot, root, shrimp, smoke, sweet lucy, texas tea, weed, young girls \\
+                \textbf{Drugs}   & Amphetamines & clear, dunk, gifts, girls, glass, ice, nails, one pot, shaved ice, shiny girl, yellow cake \\
+                                 & Heroin       & avocado, bad seed, ballot, beast, big bag, big H, brown crystal, cheese, chip, down, downtown, goat, golden girl, hard candy, mexican horse, nice and easy, pants, sheep, shirts, shoes, white nurse \\
+                \addlinespace
+                \textbf{Weapons} & Gun          & bap, boom stick, burner, chopper, cuete, gat, gatt, hardware, heater, mac, nine, piece, roscoe, strap, fire stick, ghost load, pocket rocket \\
+                                 & Bullet       & ammo, cap, cop killer, lead, rounds \\
+                \addlinespace
+                \textbf{Sex}     & Breasts      & bazooms, boobs, lungs, na-nas, puppies, tits, yabo \\
+                                 & Prostitution & call girl, girlfriend experience, hooker, poon, whore, working girl \\
+    \bottomrule
 	\end{tabular}
 	\label{table:example2}
-	\vspace{+0.2cm}
 \end{table*}
 
+\begin{table*}[ht!]
+	\centering
+	\small
+	\caption{Example usage for a few of the euphemisms in Table~\ref{table:example2}.}
+	\begin{tabular}{l@{\hspace{\interwordspace}}l@{\qquad}l}
+		\toprule
+		& \multicolumn{1}{c}{\textbf{Example Sentence} (euphemism in boldface)}
+		& \multicolumn{1}{c}{\textbf{Gloss}} \\
+		\midrule
+		1. & I had to shut up: the dealers had \textbf{gats}, my boys didn't.
+		   & \textit{machine pistol} \\\addlinespace[3pt]
+		2. & For all vendors of \textbf{coke},
+		     it seems pretty obvious that it is not as pure as they market it.
+		   & \textit{cocaine} \\\addlinespace[3pt]
+		3. & I feel really good and warm behind the eyes.
+		     It's not something I've felt before on \textbf{pot} alone to this degree.
+		   & \textit{marijuana} \\\addlinespace[3pt]
+		4. & You can get an ounce of this \textbf{blueberry kush}
+		     for like \$300 and it's insane.
+		   & \textit{variety of marijuana} \\\addlinespace[3pt]
+		5. & I'm looking for the \textbf{girlfriend experience},
+		     without having to deal with an actual girlfriend.
+		   & \textit{form of prostitution} \\
+		\bottomrule
+	\end{tabular}
+	\label{table:example1}
+\end{table*}
 
+%%% Zack stopped editing here at 12:10pm EST
 
 \subsection{Euphemism Detection}
 \begin{table*}[t!]

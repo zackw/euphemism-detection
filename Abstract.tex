@@ -1,9 +1,26 @@
 %!TEX root = main.tex
 % UTF-8 encoding
 \begin{abstract}
-The abstract goes here.
+Euphemisms, as an instrument to mask intent, have long been used throughout history. 
+For example, a rich lexicon of drug euphemisms has developed over time, with entire communities subscribing to benign sounding words that allude to names of drugs. 
+Among these instances, the primary motive is often to get a message across while escaping from being tracked by law enforcement, or being regulated by search engines. 
+To prevent the evasion, content moderators have to make timely detection of rapidly-evolving euphemisms and understand what they refer to. 
+%Detecting euphemism is of great importance to moderate online content but it is also prohibitively difficult: the moderators have to infiltrate the inner circle of criminals to learn their meanings, a task both time-consuming and potentially harmful.
+Our work aims to take the job of content moderators and tackle two related problems: euphemism detection and euphemism identification. 
+
+Previous works attempt to detect euphemism mainly by the static word embedding (\eg, word2vec) technique. 
+Yet, they simply omit the most important feature --- contextual information and thus have unsatisfactory performance overall. 
+In this paper, we explicitly make use of contextual information, formulate the problem as a fill-in-the-mask problem, and solve it by a masked language model with BERT. 
+We demonstrate a 30-400\% improvement on top-$k$ precision than other state-of-the-art baseline approaches. 
+Moreover, we observe that our approach can discover correct euphemisms that were not even on the ground truth list. 
+
+Once the usage of euphemisms has been detected, we identify what each euphemism refers to exactly (\eg, ``pot'' is used to refer to ``marijuana''). 
+It is considerably challenging to achieve euphemism identification and therefore, no prior work, to the best of our knowledge, has attempted to solve it. 
+We propose the first solution by a nice formulation of the problem and achieve the identification by a self-supervised learning scheme and a coarse-to-fine-grained classification framework, without relying on any additional resources or supervision. 
+The results reveal the feasibility of the task and demonstrate significant improvements over our constructed baseline approaches. 
 \end{abstract}
 
+
 \begin{IEEEkeywords}
-	Euphemism detection, Euphemism identification, Masked Language Model (MLM), Self-supervised learning, Coarse-to-fine-grained classification
+	Euphemism detection, Euphemism identification, Self-supervised learning, Masked Language Model (MLM), Coarse-to-fine-grained classification
 \end{IEEEkeywords}

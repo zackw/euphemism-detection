@@ -28,10 +28,10 @@ The discussion is primarily conducted for the drug dataset considering that euph
 We present the euphemism detection results by our approach in Table \ref{fig:casestudies-detection} and analyze the false positive detection results on the drug dataset in Table \ref{fig:casestudies-detection2}. 
 We categorize our false detection results into four types: 
 \begin{itemize}
-	\item They are true euphemisms but missed in the ground truth list (cases 1-5 in Table \ref{fig:casestudies-detection2}). 
-	\item They are not euphemisms by themselves, but they are part of euphemism phrases. For example, as shown in case 6 in Table \ref{fig:casestudies-detection2}, ``crack'' is not a drug euphemism while ``green crack'' is one. 
+	\item They are correct euphemisms but missed on the ground truth list (cases 1-5 in Table \ref{fig:casestudies-detection2}). 
+	\item They are not euphemisms by themselves, but they are contained in euphemism phrases. For example, as shown in case 6 in Table \ref{fig:casestudies-detection2}, ``crack'' is not a drug euphemism while ``green crack'' is one. 
 	\item Though they are not euphemisms, they are strongly related to drug or the usage of drug (cases 7-10 in Table \ref{fig:casestudies-detection2}). Cases 7 and 8 uncovers some ways that people take drugs (together with alcohol or cigarettes).
-	\item Wrong detection. 
+	\item Incorrect detection. 
 \end{itemize}
 
 The case studies reveal that we can even find some correct euphemisms that are not on the ground truth list, which suggests the rapid-evolving nature of euphemisms and the necessity of the automatic euphemism detection task. 
@@ -75,10 +75,11 @@ Yet as shown in Figure \ref{fig:11}, other classifiers have satisfactory perform
 \subsubsection{Fine-Grained Classifiers}
 \label{sec:ablation_fine-grained}
 In the euphemism identification framework, we use a multi-class classifier to identify to which target keyword each euphemism refers. 
-Again, we experimented the same set of classifiers in Section \ref{sec:ablation_coarse}. 
+Again, we experimented with the same set of classifiers in Section \ref{sec:ablation_coarse}. 
 Interestingly, we find that all classifiers have highly similar results. 
+We think one possible reason is that each class has relatively small number of training instances (ranging from a few hundreds to 100k), which limits the discriminative power of advanced algorithms. 
 For the drug dataset (33 target keywords), the training accuracy is about 55\% and the testing accuracy is about 24\%. 
-We think one possible reason is that each class has relatively small number of training instances and it is hard for even the more advance algorithms to capture the nuances between the target keywords in one category. 
+This shows the feasibility of the task since the random guess accuracy would be 3.3\%. 
 Given the similar performance across different classifiers, we recommend using Logistic Regression on raw text for better computational efficiency. 
 
 
@@ -88,6 +89,7 @@ Given the similar performance across different classifiers, we recommend using L
 \label{sec:dis_parameter_analysis}
 \begin{figure}[ht!]
 	\centering
+	%\vspace{-0.5cm}
 	\includegraphics[width=0.6\linewidth]{figures/12}
 	\caption{Sensitivity of $t$.}
 	\label{fig:12}

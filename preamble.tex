@@ -96,6 +96,12 @@ unicode
 }
 \UseMicrotypeSet[protrusion]{not-tt}
 
+% Spacing trick used in Table 1 etc.:
+% \interwordspace will be the unstretched width of one space.
+\newlength{\interwordspace}
+\settowidth{\interwordspace}{\ }
+
+% Shorthand.
 \newcommand{\etal}{\emph{et~al.}\xspace} % and others
 \newcommand{\etc}{\emph{etc.}\xspace} % and others
 \newcommand{\ie}{\emph{i.e.}\xspace} % that is

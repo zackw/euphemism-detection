@@ -40,7 +40,7 @@ as well as the more mature ecosystem that followed
 	The combined corpus has 310,898 posts. 
 	Both the list of weapon target keywords and the respective euphemisms are obtained from The Online Slang Dictionary\footnote{\url{http://onlineslangdictionary.com/}}, Slangpedia, and The Urban Thesaurus\footnote{\url{https://urbanthesaurus.org/}}. 
 	
-	\item {\em Sexuality dataset}: The raw text corpus comes from the Gab social networking services\footnote{\url{https://gab.com/}}. We use 289,4869 processed posts, collected from Jan 2018 to Oct 2018.\footnote{Available at \url{https://files.pushshift.io/gab/}}
+	\item {\em Sexuality dataset}: The raw text corpus comes from the Gab social networking services\footnote{\url{https://gab.com/}}. We use 2,894,869 processed posts, collected from Jan 2018 to Oct 2018.\footnote{Available at \url{https://files.pushshift.io/gab/}}
 	%\nicolasc{did we collect this ourselves? if not who did?} 
 	% Answer: it is available online. I am not sure who collects the data. 
 	Both the list of sexuality target keywords and the euphemisms are obtained from The Online Slang Dictionary. 
@@ -75,7 +75,7 @@ We compare our proposed approach with the following competitive baseline models:
 
 \begin{itemize}%[leftmargin=*]
 	%\setlength\itemsep{-0.2em}
-	\item \textbf{Word2vec}: We use the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  to learns the word embeddings for all the words  in the dataset. We then choose as euphemism candidates those words that are most similar to the input target keywords, in terms of  cosine similarity. 
+	\item \textbf{Word2vec}: We use the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  to learn the word embeddings for all the words  in the dataset. We then choose as euphemism candidates those words that are most similar to the input target keywords, in terms of  cosine similarity. This approach  relates words by implicitly accounting for the context in which they occur.
 	\item \textbf{TF-IDF + word2vec}: Instead of treating all the words in the dataset equally, this method first ranks the words by their potential to be euphemisms. Toward this, we calculate the TF-IDF weights of the words \cite{manning2008introduction} with respect to a background corpus (\ie, Wikipedia\footnote{\url{https://dumps.wikimedia.org/enwiki/}}), which captures a combination of the frequency of a word and its distinct usage in a given corpus. The idea is inspired by the assumption that words ranked higher in the target corpus (based on an appropriate metric, e.g., frequency) have a greater chance of being euphemisms than those ranked lower \cite{magu2018determining}.  We then select the euphemism candidates by following the word2vec approach above.  
 	\item \textbf{CantReader}\footnote{\url{https://sites.google.com/view/cantreader}} \cite{yuan2018reading} employs a neural-network based embedding technique to analyze the semantics of words, detecting the euphemism candidates whose contexts in the background corpus (\eg, Wikipedia) are significantly different from those in the dark corpus. 
 	\item SentEuph \cite{felt2020recognizing} recognizes euphemisms by the use of sentiment analysis. It lists a set of euphemism candidates using a bootstrapping algorithm for semantic lexicon induction. For a fair comparison with our approach, we do not include the manual filtering stage of the algorithm proposed by Felt and Riloff \cite{felt2020recognizing}. 
