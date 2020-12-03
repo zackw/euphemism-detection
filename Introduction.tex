@@ -1,0 +1,237 @@
+%!TEX root = main.tex
+% UTF-8 encoding
+\section{Introduction}
+\label{sec:intro}
+% Nicolas' proposal below %
+Jordan is a content moderator working for a large social media company. 
+The hours are long, 
+the pay low, 
+and the job, albeit extremely important, 
+is challenging and often frustrating. 
+Jordan frequently has to deal with highly inappropriate content, 
+and is constantly playing ``whack-a-mole'':
+the sheer volume of content to moderate demands some level of automation, such as ban-lists. 
+These ban-lists are created from knowledge accumulated by the content moderation teams. 
+However, 
+as soon as a set of terms is banned, 
+offenders adapt by using euphemisms or repurposed slang to evade the filters. 
+
+This story is far from fictional: 
+a series of reports published by The Verge in 2019 \cite{TheVerge:Mods, TheVerge:Mods2} described the severe hardships online content moderators face, 
+leading, 
+in some cases, to post-traumatic stress disorder, 
+and called for better treatment of these employees---while noting 
+that higher levels of automation remain highly challenging 
+to design and deploy. 
+Along the same lines, 
+reports such as Ofcom's~\cite{Ofcom:AI2019}
+noted the limitations of simple automated approaches, 
+such as static filters, due to language evolution, 
+including rapidly-evolving slang. 
+For example, Table~\ref{table:example1} illustrates euphemisms used to describe sensitive topics such as drug use and weapons. 
+
+Our work tackles the thorny problem of content moderation 
+by focusing on the scenario of a content moderator 
+who has a list of target keywords that they wish to moderate 
+(\eg, narcotics discussion in a family-oriented forum).  
+The moderator's goal is to automatically identify euphemisms for these keywords and understand their meaning. 
+% text that is referring to the target keywords, even if users are only using euphemisms for the keywords.
+% automated {\bf euphemism detection} and {\bf euphemism identification}.
+% We consider a setting where 
+We split this problem into two subtasks:
+\textbf{Euphemism detection} refers to identifying words 
+that are used to signify \emph{any} of the target keywords, 
+without necessarily recovering the meaning of the euphemism. 
+For instance, if our target keywords are proper drug names 
+(\eg, marijuana, heroin, cocaine), a euphemism detector would return a list of euphemistic words (\eg, pot, coke, crack,  dope).
+Table~\ref{table:example2} presents some euphemisms of the target keywords.  
+
+\textbf{Euphemism identification} instead takes a euphemism as input and identifies its meaning. 
+In our previous example, this would map pot to marijuana, coke to cocaine, etc. 
+Although these problems may be of independent interest, we envision a pipeline where moderators make use of both parts in succession to identify problematic words and understand their meaning. 
+Critically, we wish to tackle these problems in a fully-unsupervised manner. 
+
+% in adversarial environments.
+%%% END Nicolas' preamble -- we can probably delve into the more scientific part from here.
+%Euphemisms, as an instrument to mask intent, have long been used throughout history. 
+%For example, a rich lexicon of drug slang has developed over time, with entire communities subscribing to benign sounding words that allude to names of drugs.
+% tons of content online, and increasing
+% moderation is becoming harder (show numbers of moderated posts if available)
+% false positives are a disaster, so very conservative
+% hypothesize that moderation teams are here to stay, but they need help
+% time is of the essence---trends can be started and snowball out of control quickly, not much time to ''learn'' for humans
+%Highlight the importance of doing both euphemism detection and euphemism identification. 
+
+
+
+\begin{table}[ht!]
+	\centering
+	\small
+	\caption{Example sentences with euphemisms (highlighted in bold). ``Gats'' in the first example means machine guns; The second example shows the usage of ``coke'' for ``cocaine''; In the third and the fourth example, ``pot'' and ``blueberry'' are used to mean ``marijuana''; ``Girlfriend experience'' in the fifth example refers to a specific prostitution service. }
+	\begin{tabular}{p{0.46\textwidth}}
+		\toprule
+		1. I had to shut up: the dealers had \textbf{gats}, my boys didn't. \\ 
+		2. For all vendors of \textbf{coke}, it seems pretty obvious that it is not as pure as they market it. \\
+		3. I feel really good and warm behind the eyes. It`s not something i've felt before on \textbf{pot} alone to this degree. \\
+		4. You can get an ounce of this \textbf{blueberry} kush for like \$300 and it's insane. \\
+		5. I'm looking for the \textbf{girlfriend experience}, without having to deal with an actual girlfriend. \\
+		\bottomrule
+	\end{tabular}
+	\label{table:example1}
+\end{table}
+
+
+\begin{table*}[t!]
+	\centering
+	\small
+	\caption{Examples of euphemisms. Each target keyword is usually associated with multiple euphemisms.}
+	\begin{tabular}{p{0.1\textwidth}p{0.15\textwidth}p{0.65\textwidth}}
+		\toprule
+		\multicolumn{1}{c}{\textbf{Category}} & \multicolumn{1}{c}{\textbf{Target Keywords}} &  \multicolumn{1}{c}{\textbf{Euphemisms}} \\
+		\midrule
+		\centering{Drug} & \centering Marijuana & Weed, Pot, Blueberry, Popcorn, Green, Gold, Kush, Smoke, Shrimp, Root, Blue Jeans, Dirt Grass, Blue Cheese, Sweet Lucy, Texas Tea, Young Girls, ... \\
+		\midrule
+		\centering{Drug} & \centering Methamphetamine & Ice, Clear, Dunk, Gifts, Girls, Glass, Nails, One Pot, Shaved Ice, Shiny Girl, Yellow Cake, ... \\
+		\midrule
+		\centering{Drug} & \centering Heroin & Avocado, Ballot, Beast, Cheese, Chip, Down, Downtown, Goat, Pants, Sheep, Shirts, Shoes, Bad Seed, Big Bag, Big H, Brown Crystal, Golden Girl,  Hard Candy, Mexican Horse, Nice and Easy, White Nurse, ... \\
+		\midrule
+		\centering{Weapon} & \centering Gun, Firearm & 9, Bap, BFG, Boom Stick, Burner, Chopper, Cuete, Gat, Gatt, Hardware, Heater, Mac, Nine, Piece, Roscoe, Strap, Fire Stick, Ghost Load, Pocket Rocket, ... \\
+		\midrule
+		\centering{Weapon} & \centering Bullet & Ammo, Cap, Cop Killer, Lead, ... \\
+		\midrule
+		\centering{Sexuality} & \centering Breast & Bazoom, Boob, Lungs, Na-na, Puppies, Tits, Yabo, ...\\
+		\midrule
+		\centering{Sexuality} & \centering Prostitution & Hook, Poon, Whore, Call Girl, Girlfriend Experience, Working Girl, ... \\
+		\bottomrule
+	\end{tabular}
+	\label{table:example2}
+	\vspace{+0.2cm}
+\end{table*}
+
+
+
+\subsection{Euphemism Detection}
+\begin{table*}[t!]
+	\centering
+	\small
+	\caption{Representative sentences from Reddit with the target keywords. Cases 1--3 show that the masked sentences (for heroin) are drug-consumption related whereas cases 4--6 show generic masked sentences which are not directly related to the consumption of the drug.}
+	\begin{tabular}{p{0.1\textwidth}p{0.8\textwidth}}
+		\toprule
+		\multicolumn{1}{c}{\textbf{Target keywords}} &  \multicolumn{1}{c}{\textbf{Example Sentences}} \\
+		\midrule
+		\multirow{6}{*}{\centering \textbf{\space \space \space \space Heroin}}
+		& 1. This 22 year old former heroin addict who i did drugs with was caught this night. \\
+		& 2. I have xanax real roxi opana cole and heroin for sale. \\
+		& 3. Six heroin overdoses in seven hours in wooster two on life support. \\
+		& 4. Why is it so hard to find heroin? \\
+		& 5. I dont think we should mitigate heroin use. \\
+		& 6. Do heroin users make great parents? \\ 
+		\bottomrule
+	\end{tabular}
+	\label{table:example3}
+\end{table*}
+
+%\noindent \textbf{Euphemism Detection}: 
+The main challenge of automated euphemism detection is that euphemisms are typically innocent-looking  \cite{yuan2018reading}, and their usage in a sentence is often natural and grammatical (\eg, Table \ref{table:example1}). 
+Therefore, it is critical to understand a word's \emph{context}, or its surrounding words in a sentence. 
+% and focus on the contextual information 
+For example, in Table \ref{table:example1}, the context indicates that the word ``coke'' here does not refer to a beverage. 
+% depending on the context (\ie,  of ``coke'' in a sentence). 
+Without context, this euphemism detection task may be impossible even for  human experts. 
+% to tell whether it is a euphemism or not.
+
+Previous attempts to solve this problem have used the concept of \emph{embeddings} from the natural language processing (NLP) literature to identify words with similar embeddings to the target keywords \cite{takuro2020codewords,magu2018determining,yuan2018reading,zhao2016chinese}.
+However, these approaches leverage \emph{static} word embeddings (\eg, word2vec), which learn a single representation  for every word in a corpus.  
+This has two related problems:
+(1) Static embeddings do not disambiguate between different uses of the same word, which causes the embeddings of polysemous words (\ie, words with multiple meanings) to be uninformative. 
+(2) The embeddings of polysemous words with a darker meaning, and a more common, benign meaning (\eg, coke) are dominated by the benign meaning due to class imbalance of the word sense in the body of text from which the embeddings are obtained. 
+% These two problems collectively hamper the performance and generality of existing approaches. 
+% and thus, have overlooked the most important feature. 
+% and therefore, resulting in poor performance for existing solutions. 
+
+A first approach for solving these problems would be to replace the static embeddings from prior approaches with a recently-proposed class of \emph{context-aware embeddings} (\eg, BERT \cite{devlin2019bert}) that learn a different embedding for every context in which a word appears.
+This approach presents two main challenges: 
+(1) prior approaches rely on computing distances between word embeddings, which are not well-defined for context-aware embeddings.
+Natural options for solving this issue (\eg, averaging a word's embedding over all contexts) negate the benefits of context-aware embeddings.  
+(2) Not all contexts are equal. 
+That is, for a given euphemism, some sentences containing the euphemism encode more information about the term's meaning than others. 
+Table \ref{table:example3} lists sentences with \emph{uninformative} contexts (cases 4--6).
+Hence, to utilize context-aware embeddings, we need to separate informative contexts from uninformative ones, 
+which is challenging without prior labels.
+% , if we remove the drug words from those sentences, the remaining context contains limited information.
+
+
+% Based on the observation that contexual information is distinct enough for a human expert to make the decision, we formulate the problem as an unsupervised fill-in-the-mask problem and solve it by a masked language model with BERT. 
+In this paper, we design an end-to-end pipeline for detecting euphemisms by making explicit use of context. 
+This is particularly important to help content moderation of text in forums. 
+We formulate the problem as an unsupervised fill-in-the-mask problem \cite{devlin2019bert,donahue2020enabling} and solve it by combining a masked language model (proposed in BERT \cite{devlin2019bert}) with a novel self-supervised algorithm to filter out uninformative contexts.
+% Specifically, we obtain the contexual information of target keywords by getting their surrounding words, filtering the generic contextual information which brings more noise than useful context (An example is shown in Table \ref{table:example3}), and generating the euphemism candidates by a Masked Language Model (MLM) proposed in BERT. 
+The salience of our approach, which sets itself apart from other work on euphemism detection, lies in its non-reliance on linguistic resources, search-engine results, a seed set of euphemisms, or euphemism-target mappings. 
+As such it is particularly relevant to our application case---online
+platforms with free-flowing discourse that may adopt their own 
+vernacular over time. 
+Evaluating on a variety of representative datasets of online posts
+we found that our approach yields  top-$k$ detection accuracies that are 30--400\% higher than state-of-the-art baseline approaches on all of the datasets, with top-20 accuracies as high as 40--50\%, which is high for this problem. 
+A qualitative analysis reveals that our approach also discovers correct euphemisms that {\em were not on our ground truth lists}, \ie, it can 
+detect previously unknown euphemisms. 
+Again, this is highly valuable in the context of 
+Internet communities, where memes 
+and slang lead to rapidly evolving vocabulary.
+
+\subsection{Euphemism Identification}
+\label{sec:intro_iden}
+%\noindent \textbf{Euphemism Identification}: 
+\begin{table*}[t!]
+	\centering
+	\small
+	\caption{Representative sentences from Reddit with euphemisms. Cases 1--3 show euphemisms (``coke,'' ``pot'') are used in the euphemistic sense (\ie, the drug sense) while cases 4--6 show that the candidate euphemism is used in non-euphemistic senses.}
+	\begin{tabular}{p{0.1\textwidth}p{0.8\textwidth}}
+		\toprule
+		\multicolumn{1}{c}{\textbf{Euphemism}} &  \multicolumn{1}{c}{\textbf{Example sentences}} \\
+		\midrule
+		\multirow{7}{*}{\centering \textbf{\space \space \space \space Coke}}
+		& 1. We had already paid \$70 for some shitty weed from a taxi driver but we were interested in some coke and the cubans. \\
+		& 2. Why are coke dealers the most nuttiest? \\
+		& 3. OK so we have one gram high quality coke between 2 people who have never done more than a bump. \\
+		& 4. I love having coke with ice. \\
+		& 5. When I buy coke at the beverage shop in UK, I pay neither a transaction fee nor an exchange fee. \\
+		& 6. Never have tried mixing coke with sprite or 7up. \\ 
+		\midrule
+		\multirow{7}{*}{\centering \textbf{\space \space \space \space Pot}}
+		& 1. My cousin did the same and when the legalized pot in dc they really started cracking down in virginia and maryland. \\
+		& 2. As far as we know he was still smoking pot but that was it. \\
+		& 3. Age 17, every time I smoked pot, I felt out of place. \\
+		& 4. No one would resist a pot of soup. \\
+		& 5. There's plenty of cupboard space in the kitchen for all your pots and pans. \\
+		& 6. Most lilies grow well in pots. \\
+		\bottomrule
+	\end{tabular}
+	\label{table:example4}
+\end{table*}
+
+Once the usage of euphemisms has been detected, it is important to \emph{identify} what each euphemism refers to. Unlike the  task of deciding whether a given word refers to \textit{any} target keyword (euphemism detection), the task of euphemism identification maps a given euphemism to a \textit{specific} target keyword. This involves not only using the nuance of contextual information but also aggregating this information from related instances across the collection to make the inference.     
+Again, referring to the 2nd and 3rd examples in Table \ref{table:example1}, we want to identify that {\em coke} refers to {\em cocaine} and {\em pot}  to {\em marijuana}. 
+To the best of our knowledge, no prior work has explicitly captured the meaning of a euphemism except for a few peripheral works (\eg, \cite{yuan2018reading}) that identify the broad category of a euphemism (\eg, sedative, narcotic, or stimulant for a drug euphemism). 
+
+Euphemism identification poses four main challenges: 
+
+1) The distinction in meaning between the target keywords  (\eg, cocaine and marijuana) is often subtle and difficult  to learn from  raw text corpora alone; 
+2) A given euphemism can  be used in a euphemistic or  non-euphemistic sense, adding  the extra layer of linguistic nuance (Table \ref{table:example4}). 
+3) No curated datasets that are publicly available are adequate to exhaustively learn a growing list of mappings between euphemisms and their target keywords.
+4) It is unclear what linguistic and ontological resources one would need to automate this task. 
+
+In this paper, we propose the first approach to identify the precise meaning of a euphemism (\eg, mapping {\em pot}  to {\em marijuana} and {\em Adam} to {\em ecstasy}). 
+We systematically address  the  challenges identified above via a self-supervised learning scheme, a classification formulation, and a coarse-to-fine-grained framework. 
+The key novelty lies in how we formulate the problem and solve it without additional resources or supervision. 
+Going beyond demonstrating the feasibility of the task on a variety of datasets, we observed improvements in top-$k$ accuracy between 25--80\%  compared to constructed baseline approaches. 
+
+
+
+% \subsection{Contributions}
+% To summarize, we make the following contributions: 
+% \begin{itemize}%[leftmargin=*]
+% 	\item We identify the most important information (\ie, contextual information) in the task of euphemism detection, formulate the problem to a fill-in-the-mask problem, and propose to use a masked language model to solve it in an unsupervised way. 
+% 	\item We make the first attempt to the task of euphemism identification. To solve the resource challenge, the linguistic challenge and the noise challenge aforementioned, we utilize a self-supervised learning scheme and propose a coarse-to-fine-grained classification approach. 
+% 	\item We perform extensive experiments on three representative datasets. The results demonstrate that our proposed approach significantly outperforms the baseline methods. 
+% \end{itemize}
+
