@@ -82,6 +82,7 @@ where it is outperformed by standard  semi-supervised learning techniques.
 
 \begin{figure*}[t]
 	\centering
+	%\vspace{+0.5cm}
 	\includegraphics[width=1.00\linewidth]{figures/1}
 	\caption{Euphemism detection and identification pipeline.}
 	\label{fig:model_overview}
@@ -123,8 +124,8 @@ To the best of our knowledge, no work has explicitly attempted to infer euphemis
 Yuan et al.\ \cite{yuan2018reading} tackles a related problem by identifying the hypernym of euphemisms (\eg, whether it refers to a drug or a person).
 % It first extracts a set of hypernym candidates, and then run a classifier to determine the best candidate to serve as the hypernym of a euphemism. 
 In a more general sense, the task of euphemism identification is also related to sense discovery of unknown words \cite{ishiwatari2019learning,ni2017learning} and word sense disambiguation \cite{taghipour2015semi,raganato2017neural,raganato2017word,iacobacci2016embeddings}. 
-Sense discovery aims to understand the meaning of an unknown word by generating a definition sentence. 
-Word sense disambiguation focuses on identifying which sense of a word is used in a sentence, given a set of candidate senses.
+While sense discovery aims to understand the meaning of an unknown word by generating a definition sentence,  
+word sense disambiguation focuses on identifying which sense of a word is used in a sentence, given a set of candidate senses and relies heavily on a sense-tagged reference corpus, created by linguists and lexicographers.
 % and It is typically a form of multiple choice questions with distinct sense meanings. 
 However, neither of these are able to capture nuanced differences between a group of semantically-similar target words in the same category. 
 

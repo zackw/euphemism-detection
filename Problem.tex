@@ -24,7 +24,7 @@ As shown in Figure \ref{fig:model_overview}, these two tasks are complementary a
 The euphemism detection task takes as input (a) the raw text corpus, and (b) a list of target keywords (\eg, heroin, marijuana, ecstasy, \etc). 
 The expected output is an ordered ranked list of euphemism candidates, sorted by model confidence. 
 % Once a euphemism is successfully detected, we are interested in identifying which target keyword it refers to, by a euphemism identification module. 
-The euphemism identification module takes as input a euphemism (\eg, weed) and  outputs a probability distribution over the keywords in the list. 
+The euphemism identification module takes as input a euphemism (\eg, weed) and  outputs a probability distribution over the target keywords in the list. 
 For example, if we feed the euphemism \emph{weed} into this module, the output should be a probability distribution over keywords, with most of the mass on \emph{marijuana}.
 % Take ``weed'' as an example, we expect the identification module tells that it is more likely to be marijuana than other drugs. 
 

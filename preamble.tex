@@ -19,19 +19,26 @@
 \usepackage{lmodern}   % backstop to ensure no OT1 fonts are used
 \usepackage{newtxtext} % current best font package for Times body text
 \usepackage{amsmath}   % needs to be loaded before math fonts
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{newtxmath} % math fonts matching newtxtext
 \usepackage[final]{microtype} % must be loaded after all fonts
 
 % These packages can be loaded in any order, so they're alphabetical.
+\usepackage[noend,ruled,linesnumbered]{algorithm2e}
 \usepackage{booktabs}
 \usepackage{cite}
 \usepackage{comment}
+\usepackage{enumitem}
+\usepackage{multirow}
+% We're not using any of subcaption's functionality right now,
+% and enabling it pulls in the caption package, which doesn't know about
+% the IEEEtran document class, so the captions all get formatted differently
+% than how IEEE wants.
+%\usepackage{subcaption}
 \usepackage[final]{graphicx}
 \usepackage{xcolor}
-\usepackage{amsmath, amsfonts, amssymb, xspace, color, enumitem}
-\usepackage[noend,ruled,linesnumbered]{algorithm2e}
-\usepackage{multirow}
-\usepackage{subcaption}
+\usepackage{xspace}
 
 % These packages must be loaded after all other packages, in this
 % order.

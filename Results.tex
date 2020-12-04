@@ -9,7 +9,7 @@ We implemented all  models in Python 3.7 and conducted all the experiments on a 
 %Here we describe the datasets used in the study and the parameter settings of our system.
 
 \noindent \textbf{Datasets}: 
-We empirically validate our proposed model on  three separate datasets related to three broad areas of euphemism usage: drug, weapon, and sexuality. 
+We empirically validate our proposed model on  three separate datasets related to three broad areas of euphemism usage: drugs, weapons, and sexuality. 
 For the algorithm to be applicable to a dataset, we require two kinds of inputs: 1) the raw text corpus from which we extract the euphemisms and their masked sentences, and 2) a list of target keywords (\eg, heroin, marijuana, ecstasy, \etc). 
 For the purpose of carrying out a quantitative evaluation of the euphemism detection and identification approaches and comparing them with prior art, we rely on a ground truth list of  euphemisms and their target keywords. Ideally, such a list  should contain all  euphemisms for the evaluation of euphemism detection, and a one-to-one mapping from each euphemism to its actual meaning, for the evaluation of euphemism identification. 
 
@@ -25,7 +25,7 @@ For the purpose of carrying out a quantitative evaluation of the euphemism detec
 ``DarkNetMarketsNoobs'' (22,699 posts). 
 A number of these subreddits were banned from the platform 
 in early 2018 \cite{cimpanu2018reddit}. 
-Accordingly, the posts collected were authored between February 9, 2008 and December 31, 2017. 
+As a result, the posts collected were authored between February 9, 2008 and December 31, 2017. 
 While online drug trade dates back (at least) to USENET groups in the 1990s, 
 it truly picked up mainstream traction with the emergence of the 
 Silk Road in 2011. 
@@ -36,17 +36,12 @@ as well as the more mature ecosystem that followed
 	In addition, we obtained a list of drug names and the corresponding ground truth drug euphemism list from the Drug Enforcement Administration (DEA) \cite{drug2018slang}. 
 	
 	\item {\em Weapon dataset}: The raw text corpus comes from a combination of the 
-	corpora collected by Zanettou et al.\ \cite{zannettou2018gab}, Durrett et al.\ \cite{durrett2017identifying} and the examples in Slangpedia\footnote{\url{https://slangpedia.org/}}. 
+	corpora collected by Zanettou et al.\ \cite{zannettou2018gab}, Durrett et al.\ \cite{durrett2017identifying} and the examples in Slangpedia.\footnote{\url{https://slangpedia.org/}} 
 	The combined corpus has 310,898 posts. 
-	Both the list of weapon target keywords and the respective euphemisms are obtained from The Online Slang Dictionary\footnote{\url{http://onlineslangdictionary.com/}}, Slangpedia, and The Urban Thesaurus\footnote{\url{https://urbanthesaurus.org/}}. 
+	Both the list of weapon target keywords and the respective euphemisms are obtained from The Online Slang Dictionary,\footnote{\url{http://onlineslangdictionary.com/}} Slangpedia, and The Urban Thesaurus.\footnote{\url{https://urbanthesaurus.org/}} 
 	
-	\item {\em Sexuality dataset}: The raw text corpus comes from the Gab social networking services\footnote{\url{https://gab.com/}}. We use 2,894,869 processed posts, collected from Jan 2018 to Oct 2018.\footnote{Available at \url{https://files.pushshift.io/gab/}}
-	%\nicolasc{did we collect this ourselves? if not who did?} 
-	% Answer: it is available online. I am not sure who collects the data. 
-	Both the list of sexuality target keywords and the euphemisms are obtained from The Online Slang Dictionary. 
+	\item {\em Sexuality dataset}: The raw text corpus comes from the Gab social networking services.\footnote{\url{https://gab.com/}} We use 2,894,869 processed posts, collected from Jan 2018 to Oct 2018 by PushShift.\footnote{Available at \url{https://files.pushshift.io/gab/}} Both the list of sexuality target keywords and the euphemisms are obtained from The Online Slang Dictionary. 
 \end{itemize}
-%\nicolasc{An unknown commenter said ``Show some stats of the dataset?'' I agree and I did for Reddit, can we do the same for the others?}
-%Answer: Thanks for pointing it out. Done. 
 
 
 \subsection{Euphemism Detection}
@@ -56,55 +51,17 @@ We evaluate the performance of euphemism detection in this section.
 \noindent \textbf{Evaluation Metric}: 
 For each dataset, the input is an unordered list of target keywords and the output is an ordered ranked list of euphemism candidates. 
 Given the nature of the output, we evaluate the output using the measure precision at $k$ ($P@k$), which is commonly used in information retrieval to evaluate how well the search results corresponded to a query \cite{manning2008introduction}. 
-$P@k$, ranging from 0 to 1, measures the proportion of the top $k$ generated results that are correct (in our case, valid euphemisms). 
+$P@k$, ranging from 0 to 1, measures the proportion of the top $k$ generated results that are correct (in our case, valid euphemisms), which we calculate with respect to the ground truth list for each dataset. 
+In cases where an  algorithm recovers only one word of a multi-word euphemism (e.g., ``Chinese" instead of ``Chinese tobacco"), we treat the candidate as incorrect.
 Because of the known shortcoming that $P@k$ fails to take into account the positions of the relevant documents \cite{jarvelin2017ir}, we report $P@k$ for multiple values of $k$ ($k=10, 20, 30, 40, 50, 60, 80, 100$) to resolve the issue. 
 
-We point out that we are unable to measure recall for the following two reasons: 
+We are unable to measure recall for the following two reasons: 
 1) Some euphemisms in the ground truth list do not appear in the text corpus at all and using recall as a measure can result in a misrepresentation of the performance of the approaches; 
 2) Those euphemisms that indeed appear in the text corpus,  may not have been used in the euphemistic sense. 
-For example, ``chicken" is a euphemism for ``methamphetamine", but it could have been used only in the animal sense in the corpus. 
+For example, ``chicken" is a euphemism for ``methamphetamine,'' but it could have been used only in the animal sense in the corpus. 
 
 %These two reasons also highlight why using a ground truth list for evaluation may not be the perfect way of evaluating the performance of proposed approaches. \SB{are we inviting trouble with this statement? If you think so, we can exclude it.} 
 %These two reasons also underscore why  constructing a perfect ground truth list whereof all euphemism answers on the list have actually been used in the euphemistic sense in the text corpus it is extremely difficult to. 
-
-
-
-
-\noindent \textbf{Baselines}: 
-We compare our proposed approach with the following competitive baseline models:
-
-\begin{itemize}%[leftmargin=*]
-	%\setlength\itemsep{-0.2em}
-	\item \textbf{Word2vec}: We use the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  to learn the word embeddings for all the words  in the dataset. We then choose as euphemism candidates those words that are most similar to the input target keywords, in terms of  cosine similarity. This approach  relates words by implicitly accounting for the context in which they occur.
-	\item \textbf{TF-IDF + word2vec}: Instead of treating all the words in the dataset equally, this method first ranks the words by their potential to be euphemisms. Toward this, we calculate the TF-IDF weights of the words \cite{manning2008introduction} with respect to a background corpus (\ie, Wikipedia\footnote{\url{https://dumps.wikimedia.org/enwiki/}}), which captures a combination of the frequency of a word and its distinct usage in a given corpus. The idea is inspired by the assumption that words ranked higher in the target corpus (based on an appropriate metric, e.g., frequency) have a greater chance of being euphemisms than those ranked lower \cite{magu2018determining}.  We then select the euphemism candidates by following the word2vec approach above.  
-	\item \textbf{CantReader}\footnote{\url{https://sites.google.com/view/cantreader}} \cite{yuan2018reading} employs a neural-network based embedding technique to analyze the semantics of words, detecting the euphemism candidates whose contexts in the background corpus (\eg, Wikipedia) are significantly different from those in the dark corpus. 
-	\item SentEuph \cite{felt2020recognizing} recognizes euphemisms by the use of sentiment analysis. It lists a set of euphemism candidates using a bootstrapping algorithm for semantic lexicon induction. For a fair comparison with our approach, we do not include the manual filtering stage of the algorithm proposed by Felt and Riloff \cite{felt2020recognizing}. 
-	\item \textbf{EigenEuph} \cite{magu2018determining} leverages word embeddings and a community detection algorithm, to generate a cluster of euphemisms by the ranking metric of eigenvector centralities. %\cite{bonacich1972factoring,bonacich1972technique}. 
-	\item \textbf{GraphEuph}\footnote{\url{https://github.com/JherezTaylor/hatespeech_codewords}} \cite{taylor2017surfacing} also identifies euphemisms using word embeddings and a community detection algorithm. Specifically, it creates neural embedding models that capture word similarities, uses graph expansion and the PageRank scores \cite{page1999pagerank} to bootstrap an initial set of seed words, and finally enriches the bootstrapped words to learn out-of-dictionary terms that behave like euphemisms. 
-	\item \textbf{MLM-no-filtering} is an adaptation of our approach and has the same architecture as our proposed approach. However, instead of filtering the noisy masked sentences, it uses all available masked sentences to generate euphemism candidates. 
-\end{itemize}
-
-For a fair comparison, we experimented with different combinations of parameters and report the best performance for each baseline method. 
-
-\noindent \textbf{Results}: 
-Table \ref{table:res_dec} summarizes the euphemism detection results. 
-Our proposed approach outperforms all other baselines significantly in all evaluation measures and all three datasets. 
-
-Among the baselines, the most robust ones are TF-IDF + word2vec, EigenEuph \cite{magu2018determining} and MLM-no-filtering. 
-Compared with Word2vec, the TF-IDF + word2vec algorithm identifies a set of potential euphemisms first by calculating the TF-IDF with a background corpus (\ie, Wikipedia). 
-The pre-selection step works well on the Drug and Sexuality datasets. 
-Yet, it does not contribute much for the Weapon dataset. 
-We think one of the possible reasons is that the euphemisms do not occur very frequently in the text corpus and therefore, do not rank high by TF-IDF scores. 
-
-
-SentEuph \cite{felt2020recognizing} has poor performance in that it requires additional manual filtering stage to refine the results. 
-GraphEuph \cite{taylor2017surfacing} has highly unstable results across datasets. 
-Taylor \etal \cite{taylor2017surfacing} show that GraphEuph is tested on one dataset only (\ie, hate speech dataset on Twitter), calling in question its effectiveness on generalization to other domains. 
-CantReader \cite{yuan2018reading} requires additional corpus to make the semantic comparison. 
-However, we note that the results of CantReader are brittle to parameter tuning. 
-We are unable to reproduce any results as competitive as reported by Yuan \etal \cite{yuan2018reading}, even through private communications with the authors. 
-By comparing the performance of our approach and the ablation MLM-no-filtering, we conclude that the filtering step is effective in eliminating the noisy masked sentences and is necessary for producing quality and reliable results. 
-
 
 
 \begin{table*}[ht!]
@@ -154,46 +111,102 @@ By comparing the performance of our approach and the ablation MLM-no-filtering, 
 	\label{table:res_dec}
 \end{table*}
 
+\noindent \textbf{Baselines}: 
+We compare our proposed approach with the following competitive baseline models:
+
+\begin{itemize}%[leftmargin=*]
+	%\setlength\itemsep{-0.2em}
+	\item \textbf{Word2vec}: We use the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  to learn the word embeddings (100-dimensional) for all the words in each dataset separately. We then choose as euphemism candidates those words that are most similar to the input target keywords, in terms of cosine similarity (average similarity between the word and all input target keywords). 
+	This approach relates words by implicitly accounting for the context in which they occur. 
+	\item \textbf{TF-IDF + word2vec}: Instead of treating all the words in the dataset equally, this method first ranks the words by their potential to be euphemisms. Toward this, we calculate the TF-IDF weights of the words \cite{manning2008introduction} with respect to a background corpus (\ie, Wikipedia\footnote{\url{https://dumps.wikimedia.org/enwiki/}}), which captures a combination of the frequency of a word and its distinct usage in a given corpus. The idea is inspired by the assumption that words ranked higher in the target corpus (based on an appropriate metric, \eg, frequency) have a greater chance of being euphemisms than those ranked lower \cite{magu2018determining}.  We then select the euphemism candidates by following the Word2vec approach above.  
+	\item \textbf{CantReader}\footnote{\url{https://sites.google.com/view/cantreader}} \cite{yuan2018reading} employs a neural-network based embedding technique to analyze the semantics of words, detecting the euphemism candidates whose contexts in the background corpus (\eg, Wikipedia) are significantly different from those in the dark corpus. 
+	\item \textbf{SentEuph} \cite{felt2020recognizing} recognizes euphemisms by the use of sentiment analysis. It lists a set of euphemism candidates using a bootstrapping algorithm for semantic lexicon induction. For a fair comparison with our approach, we do not include the manual filtering stage of the algorithm proposed by Felt and Riloff \cite{felt2020recognizing}. 
+	\item \textbf{EigenEuph} \cite{magu2018determining} leverages word embeddings and a community detection algorithm, to generate a cluster of euphemisms by the ranking metric of eigenvector centralities. %\cite{bonacich1972factoring,bonacich1972technique}. 
+	\item \textbf{GraphEuph}\footnote{\url{https://github.com/JherezTaylor/hatespeech_codewords}} \cite{taylor2017surfacing} also identifies euphemisms using word embeddings and a community detection algorithm. Specifically, it creates neural embedding models that capture word similarities, uses graph expansion and the PageRank scores \cite{page1999pagerank} to bootstrap an initial set of seed words, and finally enriches the bootstrapped words to learn out-of-dictionary terms that behave like euphemisms. 
+	\item \textbf{MLM-no-filtering} is a simpler version of our 
+	proposed approach and shares its architecture. The key difference from our proposed approach is that instead of filtering the noisy masked sentences, it uses them \textit{all} to generate the euphemism candidates. In effect, this baseline serves as an ablation to understand the effect of the filtering stage. 
+	%available masked sentences to generate euphemism candidates. 
+\end{itemize}
+
+For a fair comparison of the baselines, we experimented with different combinations of parameters and report the best performance for each baseline method. 
+
+\noindent \textbf{Results}: 
+Table \ref{table:res_dec} summarizes the euphemism detection results. 
+Our proposed approach outperforms all the baselines by a wide margin for the different settings of the  evaluation measure on all the three datasets we studied. 
+
+The most robust baselines over the three datasets are TF-IDF + word2vec, EigenEuph  and MLM-no-filtering. 
+When compared with Word2vec, the superior performance of TF-IDF + word2vec lies in its ability to select a set of potential euphemisms  by calculating the TF-IDF with a background corpus (\ie, Wikipedia). 
+While this pre-selection step works well (relative to Word2vec) on the Drug and Sexuality datasets, it does not impact the performance on the Weapon dataset. A plausible explanation for this is that the euphemisms do not occur very frequently in comparison with the other words in the Weapons corpus and therefore, are not ranked highly by the TF-IDF scores. 
+
+
+SentEuph \cite{felt2020recognizing}'s comparatively poor performance 
+is explained by the absence of the required additional manual filtering stage to refine the results. 
+As mentioned before, this was done to compare the approaches based on their automatic performance alone.
+GraphEuph \cite{taylor2017surfacing} shows a reasonable performance on the Drug dataset, but fails to detect weapon- and sexuality-related euphemisms. This limits the generalization of the approach that was tested only on a hate speech dataset by Taylor \etal \cite{taylor2017surfacing}. %show that GraphEuph is tested on one dataset only (\ie, hate speech dataset on Twitter), calling in question its effectiveness on generalization to other domains. 
+The approach of CantReader \cite{yuan2018reading} seems to be ineffective because not only does it require additional corpora to make semantic comparisons---a requirement that is ill-defined because the nature of the additional corpora needed for a given dataset is not specified---but also because the results of CantReader are quite sensitive to parameter tuning. We were unable to reproduce the competitive results reported by Yuan \etal \cite{yuan2018reading}, even after multiple  personal communication attempts with the authors. % to better tune their system. 
+By comparing the performance of our approach and that of the ablation MLM-no-filtering, we conclude that the proposed filtering step is effective in eliminating the noisy masked sentences and is indispensable for reliable results. 
+
+
+
+\paragraph{False positive analysis}
+By studying the false positives in our results, we recovered several euphemisms that were not included in our ground truth list. 
+Table~\ref{fig:casestudies-detection2} in Appendix \ref{sec:appendix} shows sentences associated with 10 of the top 16 false positive euphemisms from the drug dataset. 
+Several of these are true euphemisms for drug keywords that were not present in the DEA ground truth list (\eg, md, l, mushrooms).
+Others are not illicit drugs (\eg, alcohol, cigarettes), but they are used in this corpus in a way that is closely related to how people use drug names,  and reveal new usage patterns. 
+For example, the sentences for ``cigarettes" indicate that people appear to be combining cigarette use with other drugs, such as PCP. 
+Similarly, the sentences containing ``alcohol" reveal that people are dissolving illicit drugs in alcohol. 
+% Several of these usages and euphemisms were unknown to us prior to running this experiment. 
+Of these 10 false positives (according to our ground truth dataset), only five are actually false positives; these words are semantically related to the drug keywords, but they are not proper euphemisms (\eg, ``pressed" is a form factor for drug pills). 
+
 
 
 \subsection{Euphemism Identification}
 \label{sec:res_iden}
-For each euphemism that we have successfully detected, we now evaluate the results of euphemism identification. 
+For each euphemism that we have successfully detected, we now evaluate euphemism identification. 
 
 \noindent \textbf{Evaluation Metric}: 
 For each euphemism, we generate a probability distribution over all target keywords and therefore, obtain a ranked list of the target keywords. 
-We evaluate the Top k accuracy ($Acc@k$), which measures how often the ground truth class falls in the top k values of our generated ranked list. 
+We evaluate the top-$k$ accuracy ($Acc@k$), which measures how often the ground truth label (target keyword) falls in the top $k$ values of our generated ranked list. 
 
 
 \noindent \textbf{Baselines}: 
-Since there is a lack of related works in the research area of euphemism identification, we establish a few baseline methods and compare our proposed approach with them. 
+Given the lack of related prior work for the task of euphemism identification, we establish a few  baseline methods and compare our proposed approach with them.
 
 \begin{itemize}%[leftmargin=*]
-	\item Word2vec: for each euphemism, we select its closest target keyword in terms of the cosine similarities of the word embeddings. We use the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient} to train on the text corpus to obtain word embeddings. 
-	\item Clustering + word2vec: for each euphemism, we cluster all its masked sentences by k-means (we set $k=2$) algorithms. We aim to filter out the noisy masked sentences that are not related to the target keywords. Then, we compare the word2vec cosine similarities between the embeddings of the masked sentences of the euphemism and the target keywords. The most similar target keyword is selected for identification. 
-	\item Binary + word2vec: similar to our approach, we use a binary classifier to filter out noisy masked sentences that are not related to the target keywords. Then, we use word2vec to find its closest target keyword. 
-	\item Multi-class-only is an adaption of our approach. It has only the fine-grained multi-class classifier but no coarse classifier. 
+	\item \textbf{Word2vec}: %For each euphemism, we rank  the words  closest to it using the measure of  cosine similarity. Here we compare the word embeddings obtained by training the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  on each text corpus, separately for the Drug, Weapon and Sexuality datasets. 
+	For each euphemism, we select the target keyword that is closest to it using the measure of cosine similarity. Here we compare the word embeddings (100-dimensional) obtained by training the word2vec algorithm \cite{mikolov2013distributed,mikolov2013efficient}  on each text corpus, separately for the Drug, Weapon and Sexuality datasets. %
+	\item \textbf{Clustering + word2vec}: For each euphemism, we cluster all its masked sentences, represented as the average of the word embeddings of the component words, using  a $k$-means  algorithm (we set $k=2$). By clustering, our aim is to filter out the noisy masked sentences that are not related to the target keywords. Then, we compare  the embeddings of the masked sentences of the euphemism and the target keywords using the measure of cosine similarity. The target keyword that is most similar to the masked sentence is selected for identification. 
+	\item \textbf{Binary + word2vec}: similar to our approach, we use a binary classifier to filter out noisy masked sentences that are not related to the target keywords. Then, we use the Word2vec approach above to find its closest target keyword. 
+	\item \textbf{Multi-class-only} is an simplistic version of our approach, which only uses the fine-grained multi-class classifier, without the preceding coarse classifier. 
 \end{itemize}
 
 
 \noindent \textbf{Results}: 
 Table \ref{table:res_iden} summarizes the euphemism identification results. 
-There are 33, 9, 12 categories for the drug, weapon and sexuality datasets respectively, resulting in the random guess performance for $Acc@1$ to be 0.03, 0.11, 0.08. 
+There are 33, 9, and 12 categories for the drug, weapon and sexuality datasets respectively, resulting in a random guess performance for $Acc@1$ to be 0.03, 0.11, 0.08 (\ie the inverse of the number of categories). 
 Our algorithm achieves the best performance for all three datasets and has a large margin over the random guess performance. 
 
 
-Word2vec has a bad performance, in that it is unable to capture the nuance differences between the target keywords by taking all sentences into consideration. 
-Therefore, we construct two baselines (\ie, Clustering + word2vec and Binary + word2vec) to remove the noisy sentences and make the learning easier. 
-Empirically, we find that the clustering algorithm does not work well whereas a binary classifier contributes to the performance improvement much. 
-By inspecting the performance of clustering, we observe one issue that could cause the ineffectiveness of removing the noisy sentences. 
-The k-means clustering algorithm did not cluster the sentences into a target keyword cluster and a non-target keyword cluster. Take the drug dataset as an example, we expect the two resulting clusters to be one drug-related cluster and one non-drug-related cluster. However, due to the broad context and vocabularies in the dataset, we find the clustering does not perform in such a way. The clustering might have been done in quality good \textit{vs.} non-quality good, or good feeling \textit{vs.} bad feeling and so on. Therefore, the k-means clustering fails to serve as a way to filter the non-drug-related masked sentences and leads to no performance improvement. 
-In contrast, the binary classifier, which can be taken as a directed k-mean clustering algorithm, specifically filters out the non-drug-related sentences and therefore, shows strong improvement. 
-In such a task, one can think that the performance of using a binary classifier is the upper bound of the performance by using a clustering algorithm. 
+Word2vec exhibits poor performance, in that it is unable to capture the nuanced differences between the target keywords by taking all sentences into consideration. 
+Therefore, we construct two baselines (\ie, Clustering + word2vec and Binary + word2vec) to remove the noisy sentences and aid learning using a more homogeneous set of masked sentences. 
+Empirically, we find that a binary classifier contributes more towards the performance, compared to the clustering algorithm. 
+This is because, the result of clustering %performance, we observe one issue that could cause the ineffectiveness of removing the noisy sentences. 
+%The $k$-means clustering algorithm 
+did not adequately cluster the sentences into a target keyword cluster and a non-target keyword cluster. 
+Taking the drug dataset as an example, %we expect the two resulting clusters to correspond to the drug-related cluster and one non-drug-related cluster. 
+%However, 
+we found that owing to the widely varying contexts and vocabulary diversity of the dataset,
+% \SB{can we elaborate on this a bit?}
+the clustering results were inadequate. %find the clustering produces very different results.
+For instance, a qualitative examination of the results of clustering for a few euphemisms showed that the cluster separation sometimes occurred by the ``quality'' attribute (\eg, high quality vs. low quality drugs) or even sentiment (\eg, feeling high vs. feeling low). 
+Therefore, $k$-means clustering fails as a filter for the non-drug-related masked sentences and does not lead to performance improvement. We leave exploring other clustering algorithms for future work.
+In contrast, the binary classifier, which can be taken as a directed $k$-means clustering algorithm, specifically filters out the non-drug-related sentences and is therefore a helpful addition. 
+For such a specific task, the binary classifier performance turns out to be a performance upper bound for clustering algorithms. 
 
-
-We would like to highlight two important findings: 
-1) Comparing the results of Word2vec and Multi-class-only, we demonstrate the power of using a classification alrgorithm over an unsupervised word embedding learning method; 
-2) by comparing the differences between Word2vec and Binary + word2vec and the differences between Multi-class-only and our approach, we demonstrate the discriminative power of a binary filtering classifier and therefore, show the benefit of using a coarse-to-fine-tuned classification over the vanilla multi-class classification. 
+We highlight two important findings: 
+1) By comparing the results of Word2vec and Multi-class-only, 
+we demonstrate the advantage of using a classification algorithm over an unsupervised word embedding-based method; 
+2) By comparing the differences between Word2vec and Binary + word2vec, and the differences between Multi-class-only and our approach, we demonstrate the superior discriminative ability of a binary filtering classifier and therefore, highlight the benefit of using a coarse-to-fine-grained classification over performing only multi-class classification. 
 
 
 

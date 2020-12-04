@@ -5,7 +5,7 @@
 %\newif\ifroughdraft\roughdraftfalse  
 \newif\ifroughdraft\roughdraftfalse  % change to '\roughdraftfalse'
 % for versions to be submitted
-\newif\ifdraft\drafttrue  % change to '\draftfalse'
+\newif\ifdraft\draftfalse  % change to '\draftfalse'
 
 % TeX black magic is isolated in preamble.tex.
 \input preamble
@@ -42,10 +42,10 @@
 \title{Self-Supervised Euphemism Detection and Identification for Content Moderation}
 \author{%
 	\ifanonymized
-	\\ \\
+	\\ 
 	\IEEEauthorblockN{Anonymous Authors}
 	\IEEEauthorblockA{
-		\textit{Anonymous Institutions}\\ \\ \\ \\
+		\textit{Anonymous Institutions}\\ \\ 
 	}
 	\else
 	\IEEEauthorblockN{Wanzheng Zhu}
@@ -60,14 +60,14 @@
 	\IEEEauthorblockN{Zachary Weinberg}
 	\IEEEauthorblockA{University of Massachusetts, Amherst}
 	\and
-	\IEEEauthorblockN{Suma Bhat}
-	\IEEEauthorblockA{University of Illinois at Urbana-Champaign}
-	\and
 	\IEEEauthorblockN{Nicolas Christin}
 	\IEEEauthorblockA{Carnegie Mellon University}
 	\and
 	\IEEEauthorblockN{Giulia Fanti}
 	\IEEEauthorblockA{Carnegie Mellon University}
+	\and
+	\IEEEauthorblockN{Suma Bhat}
+	\IEEEauthorblockA{University of Illinois at Urbana-Champaign}
 	\fi}
 \date{November 2020}
 
@@ -83,21 +83,12 @@
 	\input{Results}
 	\input{Discussion}
 	\input{Conclusion}
+	\input{Acknowledgments}
 	
-	
-	% IEEE specifies use of \section* for acknowledgments.
-	\section*{Acknowledgments}
-	\ifanonymized
-	Omitted for anonymous submission.
-	\else
-	Acknowledgments go here.
-	\fi
-	
-	% In rough-draft mode, start the bibliography on a new page, to make it
-	% more obvious how close we are to the page limit.
+	% Remove before submission: Start the bibliography on a new page, to make
+	% it more obvious how close we are to the page limit.
 	% Oakland 2020 page limit is 13 pages of main text + 5 pages of
 	% bibliography and appendices.
-	\ifroughdraft\clearpage\fi
 	\clearpage
 	
 	% activate tweaks from main.bib
@@ -107,6 +98,7 @@
 	% if IEEE's official style guide says otherwise.
 	\bibliographystyle{IEEEtranS}
 	\bibliography{main}
-	%\input{Appendix}
+
+    \input{Appendix}
 	
 \end{document}
