@@ -1,5 +1,5 @@
 % Bibliography database file.
-% Except for the special "dummy" and "ieeetran:tweaks" entries,
+% Except for the special "ieeetran:tweaks" entry just below,
 % please keep this file sorted alphabetically by *key*, use all-lowercase
 % keys, and make key order match first-author-lastname order.  This makes
 % it much easier to find duplicate entries.
@@ -8,824 +8,1132 @@
 % repeats of "[Online]. Available:".  It's the twenty-first century.
 % People know what URLs are.
 @ieeetranbstctl{ieeetran:tweaks,
-	CTLname_url_prefix = ""
+	CTLname_url_prefix = {}
 }
 
-@inproceedings{yuan2018reading,
-	title={Reading Thieves' cant: automatically identifying and understanding dark jargons from cybercrime marketplaces},
-	author={Yuan, Kan and Lu, Haoran and Liao, Xiaojing and Wang, XiaoFeng},
-	booktitle={27th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 18)},
-	pages={1027--1041},
-	year={2018}
-}
-@inproceedings{felt2020recognizing,
-	title={Recognizing Euphemisms and Dysphemisms Using Sentiment Analysis},
-	author={Felt, Christian and Riloff, Ellen},
-	booktitle={Proceedings of the Second Workshop on Figurative Language Processing},
-	pages={136--145},
-	year={2020}
-}
-@inproceedings{magu2018determining,
-	title={Determining code words in euphemistic hate speech using word embedding networks},
-	author={Magu, Rijul and Luo, Jiebo},
-	booktitle={Proceedings of the 2nd Workshop on Abusive Language Online (ALW2)},
-	pages={93--100},
-	year={2018}
-}
-@inproceedings{pei2019slang,
-	title={Slang detection and identification},
-	author={Pei, Zhengqi and Sun, Zhewei and Xu, Yang},
-	booktitle={Proceedings of the 23rd Conference on Computational Natural Language Learning (CoNLL)},
-	pages={881--889},
-	year={2019}
-}
-@article{taylor2017surfacing,
-	title={Surfacing contextual hate speech words within social media},
-	author={Taylor, Jherez and Peignon, Melvyn and Chen, Yi-Shin},
-	journal={arXiv preprint arXiv:1711.10093},
-	year={2017}
-}
-@article{drug2018slang,
-	title={Slang Terms and Code Words: A Reference for Law Enforcement Personnel},
-	author="{Drug Enforcement Administration}",
-	journal={DEA Intelligence Report DEA-HOU-DIR-022-18},
-	year={2018},
-	note="Available at \url{https://www.dea.gov/sites/default/files/2018-07/DIR-022-18.pdf}."
-}
-@inproceedings{durrett2017identifying,
-	title={Identifying Products in Online Cybercrime Marketplaces: A Dataset for Fine-grained Domain Adaptation},
-	author={Durrett, Greg and Kummerfeld, Jonathan K and Berg-Kirkpatrick, Taylor and Portnoff, Rebecca and Afroz, Sadia and McCoy, Damon and Levchenko, Kirill and Paxson, Vern},
-	booktitle={Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing},
-	pages={2598--2607},
-	year={2017}
-}
-@inproceedings{jarvelin2017ir,
-	title={IR evaluation methods for retrieving highly relevant documents},
-	author={J{\"a}rvelin, Kalervo and Kek{\"a}l{\"a}inen, Jaana},
-	booktitle={ACM SIGIR Forum},
-	volume={51},
-	number={2},
-	pages={243--250},
-	year={2017},
-	organization={ACM New York, NY, USA}
-}
-@inproceedings{kiros2015skip,
-  title={Skip-thought vectors},
-  author={Kiros, Ryan and Zhu, Yukun and Salakhutdinov, Russ R and Zemel, Richard and Urtasun, Raquel and Torralba, Antonio and Fidler, Sanja},
-  booktitle={Advances in neural information processing systems},
-  pages={3294--3302},
-  year={2015}
-}
-
-@book{manning2008introduction,
-	title={Introduction to information retrieval},
-	author={Manning, Christopher D and Sch{\"u}tze, Hinrich and Raghavan, Prabhakar},
-	year={2008},
-	publisher={Cambridge university press}
-}
-@inproceedings{mikolov2013distributed,
-	title={Distributed representations of words and phrases and their compositionality},
-	author={Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado, Greg S and Dean, Jeff},
-	booktitle={Advances in neural information processing systems},
-	pages={3111--3119},
-	year={2013}
-}
-@article{mikolov2013efficient,
-	title={Efficient estimation of word representations in vector space},
-	author={Mikolov, Tomas and Chen, Kai and Corrado, Greg and Dean, Jeffrey},
-	journal={arXiv preprint arXiv:1301.3781},
-	year={2013}
-}
-@article{bengio2003neural,
-  title={A neural probabilistic language model},
-  author={Bengio, Yoshua and Ducharme, R{\'e}jean and Vincent, Pascal and Jauvin, Christian},
-  journal={Journal of machine learning research},
-  volume={3},
-  number={Feb},
-  pages={1137--1155},
-  year={2003}
-}
-@inproceedings{durrett2017identifying,
-  title={Identifying Products in Online Cybercrime Marketplaces: A Dataset for Fine-grained Domain Adaptation},
-  author={Durrett, Greg and Kummerfeld, Jonathan K and Berg-Kirkpatrick, Taylor and Portnoff, Rebecca and Afroz, Sadia and McCoy, Damon and Levchenko, Kirill and Paxson, Vern},
-  booktitle={Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing},
-  pages={2598--2607},
-  year={2017}
-}
-@inproceedings{portnoff2017tools,
-  title={Tools for automated analysis of cybercriminal markets},
-  author={Portnoff, Rebecca S and Afroz, Sadia and Durrett, Greg and Kummerfeld, Jonathan K and Berg-Kirkpatrick, Taylor and McCoy, Damon and Levchenko, Kirill and Paxson, Vern},
-  booktitle={Proceedings of the 26th International Conference on World Wide Web},
-  pages={657--666},
-  year={2017}
-}
-@article{lewis2019bart,
-  title={Bart: Denoising sequence-to-sequence pre-training for natural language generation, translation, and comprehension},
-  author={Lewis, Mike and Liu, Yinhan and Goyal, Naman and Ghazvininejad, Marjan and Mohamed, Abdelrahman and Levy, Omer and Stoyanov, Ves and Zettlemoyer, Luke},
-  journal={arXiv preprint arXiv:1910.13461},
-  year={2019}
-}
-@inproceedings{felbo2017using,
-  title={Using millions of emoji occurrences to learn any-domain representations for detecting sentiment, emotion and sarcasm},
-  author={Felbo, Bjarke and Mislove, Alan and S{\o}gaard, Anders and Rahwan, Iyad and Lehmann, Sune},
-  booktitle={Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing},
-  pages={1615--1625},
-  year={2017}
-}
-@inproceedings{zhang2020pegasus,
-  title={Pegasus: Pre-training with extracted gap-sentences for abstractive summarization},
-  author={Zhang, Jingqing and Zhao, Yao and Saleh, Mohammad and Liu, Peter},
-  booktitle={International Conference on Machine Learning},
-  pages={11328--11339},
-  year={2020},
-  organization={PMLR}
-}
-@book{rajaraman2011mining,
-	title={Mining of massive datasets},
-	author={Rajaraman, Anand and Ullman, Jeffrey David},
-	year={2011},
-	publisher={Cambridge University Press}
-}
-@article{bonacich1972factoring,
-	title={Factoring and weighting approaches to status scores and clique identification},
-	author={Bonacich, Phillip},
-	journal={Journal of mathematical sociology},
-	volume={2},
-	number={1},
-	pages={113--120},
-	year={1972},
-	publisher={Taylor \& Francis}
-}
-@article{bonacich1972technique,
-	title={Technique for analyzing overlapping memberships},
-	author={Bonacich, Phillip},
-	journal={Sociological methodology},
-	volume={4},
-	pages={176--185},
-	year={1972},
-	publisher={JSTOR}
-}
-@techreport{page1999pagerank,
-	title={The PageRank citation ranking: Bringing order to the web.},
-	author={Page, Lawrence and Brin, Sergey and Motwani, Rajeev and Winograd, Terry},
-	year={1999},
-	institution={Stanford InfoLab}
-}
-@inproceedings{zhu2019fuse,
-	title={FUSE: Multi-faceted set expansion by coherent clustering of skip-grams},
-	author={Zhu, Wanzheng and Gong, Hongyu and Shen, Jiaming and Zhang, Chao and Shang, Jingbo and Bhat, Suma and Han, Jiawei},
-	booktitle={The European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML-PKDD)},
-	year={2020}
-}
-@inproceedings{shen2017setexpan,
-	title={Setexpan: Corpus-based set expansion via context feature selection and rank ensemble},
-	author={Shen, Jiaming and Wu, Zeqiu and Lei, Dongming and Shang, Jingbo and Ren, Xiang and Han, Jiawei},
-	booktitle={Joint European Conference on Machine Learning and Knowledge Discovery in Databases},
-	pages={288--304},
-	year={2017},
-	organization={Springer}
-}
-@inproceedings{hamilton2016inducing,
-	title={Inducing domain-specific sentiment lexicons from unlabeled corpora},
-	author={Hamilton, William L and Clark, Kevin and Leskovec, Jure and Jurafsky, Dan},
-	booktitle={Proceedings of the Conference on Empirical Methods in Natural Language Processing. Conference on Empirical Methods in Natural Language Processing},
-	volume={2016},
-	pages={595},
-	year={2016},
-	organization={NIH Public Access}
-}
-@inproceedings{zannettou2018gab,
-	title={What is gab: A bastion of free speech or an alt-right echo chamber},
-	author={Zannettou, Savvas and Bradlyn, Barry and De Cristofaro, Emiliano and Kwak, Haewoon and Sirivianos, Michael and Stringini, Gianluca and Blackburn, Jeremy},
-	booktitle={Companion Proceedings of the The Web Conference 2018},
-	pages={1007--1014},
-	year={2018}
-}
-@misc{keith1991euphemism,
-	title={Euphemism and dysphemism: language used as shield and weapon},
-	author={Keith, Allan and Burridge, Kate},
-	year={1991},
-	publisher={Oxford: Oxford University Press}
-}
-@article{pfaff1997metaphor,
-	title={Metaphor in using and understanding euphemism and dysphemism},
-	author={Pfaff, Kerry L and Gibbs, Raymond W and Johnson, Michael D},
-	journal={Applied Psycholinguistics},
-	volume={18},
-	number={1},
-	pages={59--83},
-	year={1997},
-	publisher={Cambridge University Press}
-}
-@misc{hugh2002rawson,
-	title={Rawson's Dictionary of Euphemisms and Other Doubletalk},
-	author={Hugh, Rawson},
-	year={2002},
-	publisher={New York: Crown Publishers, Inc}
-}
-@article{allan2009connotations,
-	title={The connotations of English colour terms: Colour-based X-phemisms},
-	author={Allan, Keith},
-	journal={Journal of pragmatics},
-	volume={41},
-	number={3},
-	pages={626--637},
-	year={2009},
-	publisher={Elsevier}
-}
-@article{rababah2014translatability,
-	title={The Translatability and Use of X-Phemism Expressions (X-phemization): Euphemisms, Dysphemisms and Orthophemisms) in the Medical Discourse},
-	author={Rababah, Hussein Abdo},
-	journal={Studies in literature and language},
-	volume={9},
-	number={3},
-	pages={229--240},
-	year={2014}
-}
-@book{spears1981slang,
-	title={Slang and euphemism},
-	author={Spears, Richard A},
-	year={1981},
-	publisher={Signet Book}
-}
-@article{chilton1987metaphor,
-	title={Metaphor, euphemism and the militarization of language},
-	author={Chilton, Paul},
-	journal={Current research on peace and violence},
-	volume={10},
-	number={1},
-	pages={7--19},
-	year={1987},
-	publisher={JSTOR}
-}
 @article{ahl2006motivation,
-	title={Motivation in adult education: a problem solver or a euphemism for direction and control?},
-	author={Ahl, Helene},
-	journal={International journal of lifelong education},
-	volume={25},
-	number={4},
-	pages={385--405},
-	year={2006},
-	publisher={Taylor \& Francis}
-}
-@article{fernandez2006language,
-	title={The language of death: Euphemism and conceptual metaphorization in Victorian obituaries},
-	author={Fern{\'a}ndez, Eliecer Crespo},
-	journal={SKY Journal of Linguistics},
-	volume={19},
-	number={2006},
-	pages={101--130},
-	year={2006}
-}
-@inproceedings{zhang2020empower,
-	title={Empower Entity Set Expansion via Language Model Probing},
-	author={Zhang, Yunyi and Shen, Jiaming and Shang, Jingbo and Han, Jiawei},
-	booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
-	year={2020}
+  title =        {Motivation in adult education: a problem solver or a
+                  euphemism for direction and control?},
+  author =       {Ahl, Helene},
+  journal =      {International journal of lifelong education},
+  volume =       25,
+  number =       4,
+  pages =        {385--405},
+  year =         2006,
+  publisher =    {Taylor \& Francis}
 }
 
-@inproceedings{huang2020guiding,
-	title={Guiding Corpus-based Set Expansion by Auxiliary Sets Generation and Co-Expansion},
-	author={Huang, Jiaxin and Xie, Yiqing and Meng, Yu and Shen, Jiaming and Zhang, Yunyi and Han, Jiawei},
-	booktitle={Proceedings of The Web Conference 2020},
-	pages={2188--2198},
-	year={2020}
+@article{allan2009connotations,
+  title =        {The connotations of English colour terms:
+                  Colour-based X-phemisms},
+  author =       {Allan, Keith},
+  journal =      {Journal of pragmatics},
+  volume =       41,
+  number =       3,
+  pages =        {626--637},
+  year =         2009,
+  publisher =    {Elsevier}
 }
-@inproceedings{shen2020synsetexpan,
-	title={SynSetExpan: An Iterative Framework for Joint Entity Set Expansion and Synonym Discovery},
-	author={Shen, Jiaming and Qiu, Wenda and Shang, Jingbo and Vanni, Michelle and Ren, Xiang and Han, Jiawei},
-	booktitle={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-	pages={8292--8307},
-	year={2020}
-}
-@inproceedings{rong2016egoset,
-	title={Egoset: Exploiting word ego-networks and user-generated ontology for multifaceted set expansion},
-	author={Rong, Xin and Chen, Zhe and Mei, Qiaozhu and Adar, Eytan},
-	booktitle={Proceedings of the Ninth ACM international conference on Web search and data mining},
-	pages={645--654},
-	year={2016}
-}
-@inproceedings{yang2020co,
-	title={Co-embedding network nodes and hierarchical labels with taxonomy based generative adversarial networks},
-	author={Yang, Carl and Zhang, Jieyu and Han, Jiawei},
-	booktitle={IEEE International Conference on Data Mining (ICDM)},
-	year={2020}
-}
-@inproceedings{huang2020corel,
-	title={Corel: Seed-guided topical taxonomy construction by concept learning and relation transferring},
-	author={Huang, Jiaxin and Xie, Yiqing and Meng, Yu and Zhang, Yunyi and Han, Jiawei},
-	booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
-	pages={1928--1936},
-	year={2020}
-}
-@inproceedings{mao2020octet,
-	title={Octet: Online Catalog Taxonomy Enrichment with Self-Supervision},
-	author={Mao, Yuning and Zhao, Tong and Kan, Andrey and Zhang, Chenwei and Dong, Xin Luna and Faloutsos, Christos and Han, Jiawei},
-	booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
-	pages={2247--2257},
-	year={2020}
-}
-@inproceedings{shang2020nettaxo,
-	title={Nettaxo: Automated topic taxonomy construction from text-rich network},
-	author={Shang, Jingbo and Zhang, Xinyang and Liu, Liyuan and Li, Sha and Han, Jiawei},
-	booktitle={Proceedings of The Web Conference 2020},
-	pages={1908--1919},
-	year={2020}
-}
-@inproceedings{shen2020taxoexpan,
-	title={TaxoExpan: Self-supervised Taxonomy Expansion with Position-Enhanced Graph Neural Network},
-	author={Shen, Jiaming and Shen, Zhihong and Xiong, Chenyan and Wang, Chi and Wang, Kuansan and Han, Jiawei},
-	booktitle={Proceedings of The Web Conference 2020},
-	pages={486--497},
-	year={2020}
-}
-@article{zhang2018taxogen,
-	title={Taxogen: Constructing topical concept taxonomy by adaptive term embedding and clustering},
-	author={Zhang, Chao and Tao, Fangbo and Chen, Xiusi and Shen, Jiaming and Jiang, Meng and Sadler, Brian and Vanni, Michelle and Han, Jiawei},
-	journal={Proc. KDDI},
-	year={2018}
-}
-@inproceedings{yang2017learn,
-	title={How to learn klingon without a dictionary: Detection and measurement of black keywords used by the underground economy},
-	author={Yang, Hao and Ma, Xiulin and Du, Kun and Li, Zhou and Duan, Haixin and Su, Xiaodong and Liu, Guang and Geng, Zhifeng and Wu, Jianping},
-	booktitle={2017 IEEE Symposium on Security and Privacy (SP)},
-	pages={751--769},
-	year={2017},
-	organization={IEEE}
-}
-@inproceedings{portnoff2017tools,
-	title={Tools for automated analysis of cybercriminal markets},
-	author={Portnoff, Rebecca S and Afroz, Sadia and Durrett, Greg and Kummerfeld, Jonathan K and Berg-Kirkpatrick, Taylor and McCoy, Damon and Levchenko, Kirill and Paxson, Vern},
-	booktitle={Proceedings of the 26th International Conference on World Wide Web},
-	pages={657--666},
-	year={2017}
-}
-@inproceedings{christin2013traveling,
-	title={Traveling the Silk Road: A measurement analysis of a large anonymous online marketplace},
-	author={Christin, Nicolas},
-	booktitle={Proceedings of the 22nd international conference on World Wide Web},
-	pages={213--224},
-	year={2013}
-}
-@inproceedings{leontiadis2011measuring,
-	title={Measuring and Analyzing Search-Redirection Attacks in the Illicit Online Prescription Drug Trade.},
-	author={Leontiadis, Nektarios and Moore, Tyler and Christin, Nicolas},
-	booktitle={USENIX Security Symposium},
-	volume={11},
-	year={2011}
-}
-@inproceedings{mccoy2012pharmaleaks,
-	title={Pharmaleaks: Understanding the business of online pharmaceutical affiliate programs},
-	author={McCoy, Damon and Pitsillidis, Andreas and Grant, Jordan and Weaver, Nicholas and Kreibich, Christian and Krebs, Brian and Voelker, Geoffrey and Savage, Stefan and Levchenko, Kirill},
-	booktitle={Presented as part of the 21st $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 12)},
-	pages={1--16},
-	year={2012}
-}
-@inproceedings{huang2015supor,
-	title={$\{$SUPOR$\}$: Precise and Scalable Sensitive User Input Detection for Android Apps},
-	author={Huang, Jianjun and Li, Zhichun and Xiao, Xusheng and Wu, Zhenyu and Lu, Kangjie and Zhang, Xiangyu and Jiang, Guofei},
-	booktitle={24th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 15)},
-	pages={977--992},
-	year={2015}
-}
-@inproceedings{nan2015uipicker,
-	title={Uipicker: User-input privacy identification in mobile applications},
-	author={Nan, Yuhong and Yang, Min and Yang, Zhemin and Zhou, Shunfan and Gu, Guofei and Wang, XiaoFeng},
-	booktitle={24th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 15)},
-	pages={993--1008},
-	year={2015}
-}
-@inproceedings{thomas2013trafficking,
-	title={Trafficking fraudulent accounts: The role of the underground market in Twitter spam and abuse},
-	author={Thomas, Kurt and McCoy, Damon and Grier, Chris and Kolcz, Alek and Paxson, Vern},
-	booktitle={22nd $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 13)},
-	pages={195--210},
-	year={2013}
-}
-@article{sedhai2017semi,
-	title={Semi-supervised spam detection in Twitter stream},
-	author={Sedhai, Surendra and Sun, Aixin},
-	journal={IEEE Transactions on Computational Social Systems},
-	volume={5},
-	number={1},
-	pages={169--175},
-	year={2017},
-	publisher={IEEE}
-}
-@article{wu2018twitter,
-	title={Twitter spam detection: Survey of new approaches and comparative study},
-	author={Wu, Tingmin and Wen, Sheng and Xiang, Yang and Zhou, Wanlei},
-	journal={Computers \& Security},
-	volume={76},
-	pages={265--284},
-	year={2018},
-	publisher={Elsevier}
-}
-@inproceedings{wu2017twitter,
-	title={Twitter spam detection based on deep learning},
-	author={Wu, Tingmin and Liu, Shigang and Zhang, Jun and Xiang, Yang},
-	booktitle={Proceedings of the australasian computer science week multiconference},
-	pages={1--8},
-	year={2017}
-}
-@inproceedings{levy2014dependency,
-	title={Dependency-based word embeddings},
-	author={Levy, Omer and Goldberg, Yoav},
-	booktitle={Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)},
-	pages={302--308},
-	year={2014}
-}
-@article{bojanowski2017enriching,
-	title={Enriching word vectors with subword information},
-	author={Bojanowski, Piotr and Grave, Edouard and Joulin, Armand and Mikolov, Tomas},
-	journal={Transactions of the Association for Computational Linguistics},
-	volume={5},
-	pages={135--146},
-	year={2017},
-	publisher={MIT Press}
-}
-@inproceedings{lafferty2001conditional,
-	title={Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data},
-	author={Lafferty, John D and McCallum, Andrew and Pereira, Fernando CN},
-	booktitle={Proceedings of the Eighteenth International Conference on Machine Learning},
-	pages={282--289},
-	year={2001}
-}
-@inproceedings{rauber2011kernel,
-	title={Kernel multilayer perceptron},
-	author={Rauber, Thomas and Berns, Karsten},
-	booktitle={2011 24th SIBGRAPI Conference on Graphics, Patterns and Images},
-	pages={337--343},
-	year={2011},
-	organization={IEEE}
-}
-@article{huang2015bidirectional,
-	title={Bidirectional LSTM-CRF models for sequence tagging},
-	author={Huang, Zhiheng and Xu, Wei and Yu, Kai},
-	journal={arXiv preprint arXiv:1508.01991},
-	year={2015}
-}
-@inproceedings{zhao2016chinese,
-	title={Chinese underground market jargon analysis based on unsupervised learning},
-	author={Zhao, Kangzhi and Zhang, Yong and Xing, Chunxiao and Li, Weifeng and Chen, Hsinchun},
-	booktitle={2016 IEEE Conference on Intelligence and Security Informatics (ISI)},
-	pages={97--102},
-	year={2016},
-	organization={IEEE}
-}
-@article{weng2019selfsup,
-	title={Self-Supervised Representation Learning},
-	author={Weng, Lilian},
-	journal={lilianweng.github.io/lil-log},
-	year={2019},
-	url={https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html}
-}
-@inproceedings{liu2018empower,
-	title={Empower sequence labeling with task-aware neural language model},
-	author={Liu, Liyuan and Shang, Jingbo and Ren, Xiang and Xu, Frank F and Gui, Huan and Peng, Jian and Han, Jiawei},
-	booktitle={32nd AAAI Conference on Artificial Intelligence, AAAI 2018},
-	pages={5253--5260},
-	year={2018},
-	organization={AAAI Press}
-}
-@inproceedings{devlin2019bert,
-	title={BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-	author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
-	booktitle={Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
-	pages={4171--4186},
-	year={2019}
-}
-@inproceedings{lan2019albert,
-	title={ALBERT: A Lite BERT for Self-supervised Learning of Language Representations},
-	author={Lan, Zhenzhong and Chen, Mingda and Goodman, Sebastian and Gimpel, Kevin and Sharma, Piyush and Soricut, Radu},
-	booktitle={International Conference on Learning Representations},
-	year={2019}
-}
-@article{liu2019roberta,
-	title={Roberta: A robustly optimized bert pretraining approach},
-	author={Liu, Yinhan and Ott, Myle and Goyal, Naman and Du, Jingfei and Joshi, Mandar and Chen, Danqi and Levy, Omer and Lewis, Mike and Zettlemoyer, Luke and Stoyanov, Veselin},
-	journal={arXiv preprint arXiv:1907.11692},
-	year={2019}
-}
+
 @article{baevski2020wav2vec,
-	title={wav2vec 2.0: A framework for self-supervised learning of speech representations},
-	author={Baevski, Alexei and Zhou, Yuhao and Mohamed, Abdelrahman and Auli, Michael},
-	journal={Advances in Neural Information Processing Systems},
-	volume={33},
-	year={2020}
-}
-@article{chen2020big,
-	title={Big self-supervised models are strong semi-supervised learners},
-	author={Chen, Ting and Kornblith, Simon and Swersky, Kevin and Norouzi, Mohammad and Hinton, Geoffrey E},
-	journal={Advances in Neural Information Processing Systems},
-	volume={33},
-	year={2020}
-}
-@inproceedings{takuro2020codewords,
-	title={Codewords Detection in Microblogs Focusing on Differences in Word Use Between Two Corpora},
-	author={Takuro, HADA and Yuichi, SEI and TAHARA, Yasuyuki and OHSUGA, Akihiko},
-	booktitle={2020 International Conference on Computing, Electronics \& Communications Engineering (iCCECE)},
-	pages={103--108},
-	year={2020},
-	organization={IEEE}
-}
-@inproceedings{qian2019learning,
-	title={Learning to Decipher Hate Symbols},
-	author={Qian, Jing and ElSherief, Mai and Belding, Elizabeth and Wang, William Yang},
-	booktitle={Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
-	pages={3006--3015},
-	year={2019}
-}
-@inproceedings{ishiwatari2019learning,
-	title={Learning to describe unknown phrases with local and global contexts},
-	author={Ishiwatari, Shonosuke and Hayashi, Hiroaki and Yoshinaga, Naoki and Neubig, Graham and Sato, Shoetsu and Toyoda, Masashi and Kitsuregawa, Masaru},
-	booktitle={Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
-	pages={3467--3476},
-	year={2019}
-}
-@inproceedings{ni2017learning,
-	title={Learning to Explain Non-Standard English Words and Phrases},
-	author={Ni, Ke and Wang, William Yang},
-	booktitle={Proceedings of the Eighth International Joint Conference on Natural Language Processing (Volume 2: Short Papers)},
-	pages={413--417},
-	year={2017}
-}
-@misc{TheVerge:Mods,
-	author = "Casey Newton", 
-	title = "The terror queue",
-	year = 2019,
-	month = dec, 
-	note="\url{https://www.theverge.com/2019/12/16/21021005/google-youtube-moderators-ptsd-accenture-violent-disturbing-content-interviews-video}"
-}
-@Misc{TheVerge:Mods2,
-	title = "The trauma floor: The secret lives of {Facebook} moderators in {America}",
-	author={Casey Newton}, 
-	year = 2019, 
-	month = feb, 
-	note = "\url{https://www.theverge.com/2019/2/25/18229714/cognizant-facebook-content-moderator-interviews-trauma-working-conditions-arizona}"
-}
-@Misc{Ofcom:AI2019,
-	title = "Use of {AI} in online content moderation",
-	author = "{Cambridge Consultants}", 
-	howpublished = "Ofcom report",
-	year = 2019, 
-	note = "\url{https://www.ofcom.org.uk/__data/assets/pdf_file/0028/157249/cambridge-consultants-ai-content-moderation.pdf}"
-}
-@inproceedings{iacobacci2016embeddings,
-	title={Embeddings for word sense disambiguation: An evaluation study},
-	author={Iacobacci, Ignacio and Pilehvar, Mohammad Taher and Navigli, Roberto},
-	booktitle={Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
-	volume={1},
-	pages={897--907},
-	year={2016}
+  title =        {wav2vec 2.0: A framework for self-supervised
+                  learning of speech representations},
+  author =       {Baevski, Alexei and Zhou, Yuhao and Mohamed,
+                  Abdelrahman and Auli, Michael},
+  journal =      {Advances in Neural Information Processing Systems},
+  volume =       33,
+  year =         2020
 }
 
-@inproceedings{taghipour2015semi,
-	title={Semi-supervised word sense disambiguation using word embeddings in general and specific domains},
-	author={Taghipour, Kaveh and Ng, Hwee Tou},
-	booktitle={Proceedings of the 2015 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies},
-	pages={314--323},
-	year={2015}
+@inproceedings{bahdanau2015neural,
+  title =        {Neural machine translation by jointly learning to
+                  align and translate},
+  author =       {Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio,
+                  Yoshua},
+  booktitle =    {International Conference on Learning
+                  Representations},
+  year =         2015
 }
 
-@inproceedings{raganato2017word,
-	title={Word sense disambiguation: A unified evaluation framework and empirical comparison},
-	author={Raganato, Alessandro and Camacho-Collados, Jose and Navigli, Roberto},
-	booktitle={Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers},
-	volume={1},
-	pages={99--110},
-	year={2017}
+@article{bengio2003neural,
+  title =        {A neural probabilistic language model},
+  author =       {Bengio, Yoshua and Ducharme, R{\'e}jean and Vincent,
+                  Pascal and Jauvin, Christian},
+  journal =      {Journal of machine learning research},
+  volume =       3,
+  number =       {Feb},
+  pages =        {1137--1155},
+  year =         2003
 }
 
-@inproceedings{raganato2017neural,
-	title={Neural sequence learning models for word sense disambiguation},
-	author={Raganato, Alessandro and Bovi, Claudio Delli and Navigli, Roberto},
-	booktitle={Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing},
-	pages={1156--1167},
-	year={2017}
-}
-@inproceedings{feng2019self,
-	title={Self-supervised representation learning by rotation feature decoupling},
-	author={Feng, Zeyu and Xu, Chang and Tao, Dacheng},
-	booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-	pages={10364--10374},
-	year={2019}
-}
-@inproceedings{kolesnikov2019revisiting,
-	title={Revisiting self-supervised visual representation learning},
-	author={Kolesnikov, Alexander and Zhai, Xiaohua and Beyer, Lucas},
-	booktitle={Proceedings of the IEEE conference on Computer Vision and Pattern Recognition},
-	pages={1920--1929},
-	year={2019}
-}
-@inproceedings{sabokrou2019self,
-	title={Self-supervised representation learning via neighborhood-relational encoding},
-	author={Sabokrou, Mohammad and Khalooei, Mohammad and Adeli, Ehsan},
-	booktitle={Proceedings of the IEEE International Conference on Computer Vision},
-	pages={8010--8019},
-	year={2019}
-}
-@inproceedings{kahn2018self,
-	title={Self-supervised deep reinforcement learning with generalized computation graphs for robot navigation},
-	author={Kahn, Gregory and Villaflor, Adam and Ding, Bosen and Abbeel, Pieter and Levine, Sergey},
-	booktitle={2018 IEEE International Conference on Robotics and Automation (ICRA)},
-	pages={1--8},
-	year={2018},
-	organization={IEEE}
-}
-@inproceedings{zeng2018learning,
-	title={Learning synergies between pushing and grasping with self-supervised deep reinforcement learning},
-	author={Zeng, Andy and Song, Shuran and Welker, Stefan and Lee, Johnny and Rodriguez, Alberto and Funkhouser, Thomas},
-	booktitle={2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-	pages={4238--4245},
-	year={2018},
-	organization={IEEE}
-}
-@article{pong2019skew,
-	title={Skew-fit: State-covering self-supervised reinforcement learning},
-	author={Pong, Vitchyr H and Dalal, Murtaza and Lin, Steven and Nair, Ashvin and Bahl, Shikhar and Levine, Sergey},
-	journal={arXiv preprint arXiv:1903.03698},
-	year={2019}
-}
-@inproceedings{zhai2019s4l,
-	title={S4l: Self-supervised semi-supervised learning},
-	author={Zhai, Xiaohua and Oliver, Avital and Kolesnikov, Alexander and Beyer, Lucas},
-	booktitle={Proceedings of the IEEE international conference on computer vision},
-	pages={1476--1485},
-	year={2019}
-}
-@article{sun2019unsupervised,
-	title={Unsupervised domain adaptation through self-supervision},
-	author={Sun, Yu and Tzeng, Eric and Darrell, Trevor and Efros, Alexei A},
-	journal={arXiv preprint arXiv:1909.11825},
-	year={2019}
-}
-@article{xu2019self,
-	title={Self-supervised domain adaptation for computer vision tasks},
-	author={Xu, Jiaolong and Xiao, Liang and L{\'o}pez, Antonio M},
-	journal={IEEE Access},
-	volume={7},
-	pages={156694--156706},
-	year={2019},
-	publisher={IEEE}
-}
-@inproceedings{mees2019self,
-	title={Self-supervised 3D Shape and Viewpoint Estimation from Single Images for Robotics},
-	author={Mees, Oier and Tatarchenko, Maxim and Brox, Thomas and Burgard, Wolfram},
-	booktitle={2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-	pages={6083--6089},
-	year={2019},
-	organization={IEEE}
-}
-@inproceedings{nair2017combining,
-	title={Combining self-supervised learning and imitation for vision-based rope manipulation},
-	author={Nair, Ashvin and Chen, Dian and Agrawal, Pulkit and Isola, Phillip and Abbeel, Pieter and Malik, Jitendra and Levine, Sergey},
-	booktitle={2017 IEEE International Conference on Robotics and Automation (ICRA)},
-	pages={2146--2153},
-	year={2017},
-	organization={IEEE}
-}
 @article{berscheid2020self,
-	title={Self-supervised learning for precise pick-and-place without object model},
-	author={Berscheid, Lars and Mei{\ss}ner, Pascal and Kr{\"o}ger, Torsten},
-	journal={IEEE Robotics and Automation Letters},
-	volume={5},
-	number={3},
-	pages={4828--4835},
-	year={2020},
-	publisher={IEEE}
+  title =        {Self-supervised learning for precise pick-and-place
+                  without object model},
+  author =       {Berscheid, Lars and Mei{\ss}ner, Pascal and
+                  Kr{\"o}ger, Torsten},
+  journal =      {IEEE Robotics and Automation Letters},
+  volume =       5,
+  number =       3,
+  pages =        {4828--4835},
+  year =         2020,
+  publisher =    {IEEE}
 }
-@inproceedings{yin2020dreaming,
-	title={Dreaming to distill: Data-free knowledge transfer via DeepInversion},
-	author={Yin, Hongxu and Molchanov, Pavlo and Alvarez, Jose M and Li, Zhizhong and Mallya, Arun and Hoiem, Derek and Jha, Niraj K and Kautz, Jan},
-	booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-	pages={8715--8724},
-	year={2020}
+
+@article{blackie1996:scunthorpe,
+  title =        {{AOL censors British town's name!}},
+  author =       {Doug Blackie},
+  journal =      {Computer underground digest},
+  volume =       8,
+  issue =        29,
+  issn =         {1004-042X},
+  year =         1996,
+  month =        {April},
+  note =         {As abstracted in RISKS Digest 18.07},
+  url =          {http://catless.ncl.ac.uk/Risks/18.07.html#subj3}
 }
-@inproceedings{wang2016attention,
-	title={Attention-based LSTM for aspect-level sentiment classification},
-	author={Wang, Yequan and Huang, Minlie and Zhu, Xiaoyan and Zhao, Li},
-	booktitle={Proceedings of the 2016 conference on empirical methods in natural language processing},
-	pages={606--615},
-	year={2016}
+
+@article{bojanowski2017enriching,
+  title =        {Enriching word vectors with subword information},
+  author =       {Bojanowski, Piotr and Grave, Edouard and Joulin,
+                  Armand and Mikolov, Tomas},
+  journal =      {Transactions of the Association for Computational
+                  Linguistics},
+  volume =       5,
+  pages =        {135--146},
+  year =         2017,
+  publisher =    {MIT Press}
 }
-@book{kleinbaum2002logistic,
-	title={Logistic regression},
-	author={Kleinbaum, David G and Dietz, K and Gail, M and Klein, Mitchel and Klein, Mitchell},
-	year={2002},
-	publisher={Springer}
+
+@article{bonacich1972factoring,
+  title =        {Factoring and weighting approaches to status scores
+                  and clique identification},
+  author =       {Bonacich, Phillip},
+  journal =      {Journal of mathematical sociology},
+  volume =       2,
+  number =       1,
+  pages =        {113--120},
+  year =         1972,
+  publisher =    {Taylor \& Francis}
 }
-@article{lin2017structured,
-	title={A structured self-attentive sentence embedding},
-	author={Lin, Zhouhan and Feng, Minwei and Santos, Cicero Nogueira dos and Yu, Mo and Xiang, Bing and Zhou, Bowen and Bengio, Yoshua},
-	journal={arXiv preprint arXiv:1703.03130},
-	year={2017}
+
+@article{bonacich1972technique,
+  title =        {Technique for analyzing overlapping memberships},
+  author =       {Bonacich, Phillip},
+  journal =      {Sociological methodology},
+  volume =       4,
+  pages =        {176--185},
+  year =         1972,
+  publisher =    {JSTOR}
 }
-@inproceedings{kim2014convolutional,
-	title={Convolutional Neural Networks for Sentence Classification},
-	author={Kim, Yoon},
-	booktitle={Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-	pages={1746--1751},
-	year={2014}
+
+@article{chen2020big,
+  title =        {Big self-supervised models are strong
+                  semi-supervised learners},
+  author =       {Chen, Ting and Kornblith, Simon and Swersky, Kevin
+                  and Norouzi, Mohammad and Hinton, Geoffrey E},
+  journal =      {Advances in Neural Information Processing Systems},
+  volume =       33,
+  year =         2020
 }
-@inproceedings{lai2015recurrent,
-	title={Recurrent convolutional neural networks for text classification},
-	author={Lai, Siwei and Xu, Liheng and Liu, Kang and Zhao, Jun},
-	booktitle={Twenty-ninth AAAI conference on artificial intelligence},
-	year={2015}
+
+@article{chilton1987metaphor,
+  title =        {Metaphor, euphemism and the militarization of
+                  language},
+  author =       {Chilton, Paul},
+  journal =      {Current research on peace and violence},
+  volume =       10,
+  number =       1,
+  pages =        {7--19},
+  year =         1987,
+  publisher =    {JSTOR}
+}
+
+@inproceedings{christin2013traveling,
+  title =        {Traveling the Silk Road: A measurement analysis of a
+                  large anonymous online marketplace},
+  author =       {Christin, Nicolas},
+  booktitle =    {The Web Conference},
+  pages =        {213--224},
+  year =         2013
+}
+
+@misc{cimpanu2018reddit,
+  title =        {{Reddit} Bans Community Dedicated to Dark Web
+                  Markets},
+  author =       {Catalin Cimpanu},
+  year =         2018,
+  month =        mar,
+  url =          {https://www.bleepingcomputer.com/news/security/reddit-bans-community-dedicated-to-dark-web-markets/}
+}
+
+@inproceedings{devlin2019bert,
+  title =        {{BERT: Pre-training of Deep Bidirectional
+                  Transformers for Language Understanding}},
+  author =       {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton
+                  and Toutanova, Kristina},
+  booktitle =    {Human Language Technologies},
+  organization = {NAACL},
+  volume =       1,
+  pages =        {4171--4186},
+  year =         2019,
+  note =         {\href{https://arxiv.org/abs/1810.04805}{arXiv:1810.04805} [cs.CL]}
+}
+
+@inproceedings{donahue2020enabling,
+  title =        {Enabling Language Models to Fill in the Blanks},
+  author =       {Donahue, Chris and Lee, Mina and Liang, Percy},
+  booktitle =    {Annual Meeting of the Association for Computational
+                  Linguistics},
+  year =         2020
+}
+
+@article{drug2018slang,
+  title =        {Slang Terms and Code Words: A Reference for Law
+                  Enforcement Personnel},
+  author =       {{Drug Enforcement Administration}},
+  journal =      {DEA Intelligence Report DEA-HOU-DIR-022-18},
+  year =         2018,
+  url =          {https://www.dea.gov/sites/default/files/2018-07/DIR-022-18.pdf}
+}
+
+@inproceedings{durrett2017identifying,
+  title =        {Identifying Products in Online Cybercrime
+                  Marketplaces: A Dataset for Fine-grained Domain
+                  Adaptation},
+  author =       {Durrett, Greg and Kummerfeld, Jonathan K and
+                  Berg-Kirkpatrick, Taylor and Portnoff, Rebecca and
+                  Afroz, Sadia and McCoy, Damon and Levchenko, Kirill
+                  and Paxson, Vern},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {2598--2607},
+  year =         2017
+}
+
+@inproceedings{felbo2017using,
+  title =        {Using millions of emoji occurrences to learn
+                  any-domain representations for detecting sentiment,
+                  emotion and sarcasm},
+  author =       {Felbo, Bjarke and Mislove, Alan and S{\o}gaard,
+                  Anders and Rahwan, Iyad and Lehmann, Sune},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {1615--1625},
+  year =         2017
+}
+
+@inproceedings{felt2020recognizing,
+  title =        {Recognizing Euphemisms and Dysphemisms Using
+                  Sentiment Analysis},
+  author =       {Felt, Christian and Riloff, Ellen},
+  booktitle =    {Figurative Language Processing},
+  pages =        {136--145},
+  year =         2020
+}
+
+@inproceedings{feng2019self,
+  title =        {Self-supervised representation learning by rotation
+                  feature decoupling},
+  author =       {Feng, Zeyu and Xu, Chang and Tao, Dacheng},
+  booktitle =    {Computer Vision and Pattern Recognition},
+  organization = {IEEE},
+  pages =        {10364--10374},
+  year =         2019
+}
+
+@article{fernandez2006language,
+  title =        {The language of death: Euphemism and conceptual
+                  metaphorization in Victorian obituaries},
+  author =       {Fern{\'a}ndez, Eliecer Crespo},
+  journal =      {SKY Journal of Linguistics},
+  volume =       19,
+  number =       2006,
+  pages =        {101--130},
+  year =         2006
+}
+
+@inproceedings{hamilton2016inducing,
+  title =        {Inducing domain-specific sentiment lexicons from
+                  unlabeled corpora},
+  author =       {Hamilton, William L and Clark, Kevin and Leskovec,
+                  Jure and Jurafsky, Dan},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  volume =       2016,
+  pages =        595,
+  year =         2016,
+  organization = {NIH Public Access}
 }
 
 @article{hochreiter1997long,
-	title={Long short-term memory},
-	author={Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
-	journal={Neural computation},
-	volume={9},
-	number={8},
-	pages={1735--1780},
-	year={1997},
-	publisher={MIT Press}
-}
-@inproceedings{bahdanau2015neural,
-	title={Neural machine translation by jointly learning to align and translate},
-	author={Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
-	booktitle={3rd International Conference on Learning Representations, ICLR 2015},
-	year={2015}
+  title =        {Long short-term memory},
+  author =       {Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
+  journal =      {Neural computation},
+  volume =       9,
+  number =       8,
+  pages =        {1735--1780},
+  year =         1997,
+  publisher =    {MIT Press}
 }
 
-@misc{cimpanu2018reddit, 
-    title = "{Reddit} Bans Community Dedicated to Dark Web Markets",
-    author = "Catalin Cimpanu", 
-    year = 2018, 
-    month = mar,
-    note = "\url{https://www.bleepingcomputer.com/news/security/reddit-bans-community-dedicated-to-dark-web-markets/}."
-}
-@InProceedings{soska15markets,
-        author = "K. Soska and N. Christin", 
-        title = "Measuring the Longitudinal Evolution of the Online Anonymous Marketplace Ecosystem",
-        booktitle = "Proceedings of the 24th USENIX Security Symposium (USENIX Security'15)", 
-        year = 2015, 
-        month = aug, 
-        pages = "33--48", 
-        address = "Washington, DC"
-}
 @book{hosmer2013applied,
-	title={Applied logistic regression},
-	author={Hosmer Jr, David W and Lemeshow, Stanley and Sturdivant, Rodney X},
-	volume={398},
-	year={2013},
-	publisher={John Wiley \& Sons}
+  title =        {Applied logistic regression},
+  author =       {Hosmer Jr, David W and Lemeshow, Stanley and
+                  Sturdivant, Rodney X},
+  volume =       398,
+  year =         2013,
+  publisher =    {John Wiley \& Sons}
 }
-@techreport{rumelhart1985learning,
-	title={Learning internal representations by error propagation},
-	author={Rumelhart, David E and Hinton, Geoffrey E and Williams, Ronald J},
-	year={1985},
-	institution={California Univ San Diego La Jolla Inst for Cognitive Science}
+
+@misc{huang2015bidirectional,
+  title =        {Bidirectional LSTM-CRF models for sequence tagging},
+  author =       {Huang, Zhiheng and Xu, Wei and Yu, Kai},
+  howpublished = {\href{https://arxiv.org/abs/1508.01991}{arXiv:1508.01991} [cs.CL]},
+  year =         2015
 }
-@inproceedings{donahue2020enabling,
-	title={Enabling Language Models to Fill in the Blanks},
-	author={Donahue, Chris and Lee, Mina and Liang, Percy},
-	booktitle={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
-	year={2020}
+
+@inproceedings{huang2015supor,
+  title =        {$\{$SUPOR$\}$: Precise and Scalable Sensitive User
+                  Input Detection for Android Apps},
+  author =       {Huang, Jianjun and Li, Zhichun and Xiao, Xusheng and
+                  Wu, Zhenyu and Lu, Kangjie and Zhang, Xiangyu and
+                  Jiang, Guofei},
+  booktitle =    {USENIX Security Symposium},
+  pages =        {977--992},
+  year =         2015
 }
+
+@inproceedings{huang2020corel,
+  title =        {Corel: Seed-guided topical taxonomy construction by
+                  concept learning and relation transferring},
+  author =       {Huang, Jiaxin and Xie, Yiqing and Meng, Yu and
+                  Zhang, Yunyi and Han, Jiawei},
+  booktitle =    {Knowledge Discovery \& Data Mining},
+  organization = {ACM},
+  pages =        {1928--1936},
+  year =         2020
+}
+
+@inproceedings{huang2020guiding,
+  title =        {Guiding Corpus-based Set Expansion by Auxiliary Sets
+                  Generation and Co-Expansion},
+  author =       {Huang, Jiaxin and Xie, Yiqing and Meng, Yu and Shen,
+                  Jiaming and Zhang, Yunyi and Han, Jiawei},
+  booktitle =    {The Web Conference},
+  pages =        {2188--2198},
+  year =         2020
+}
+
+@misc{hugh2002rawson,
+  title =        {Rawson's Dictionary of Euphemisms and Other
+                  Doubletalk},
+  author =       {Hugh, Rawson},
+  year =         2002,
+  publisher =    {New York: Crown Publishers, Inc}
+}
+
 @inproceedings{huo2019coarse,
-	title={Coarse-to-Fine Grained Classification},
-	author={Huo, Yuqi and Lu, Yao and Niu, Yulei and Lu, Zhiwu and Wen, Ji-Rong},
-	booktitle={Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
-	pages={1033--1036},
-	year={2019}
+  title =        {Coarse-to-Fine Grained Classification},
+  author =       {Huo, Yuqi and Lu, Yao and Niu, Yulei and Lu, Zhiwu
+                  and Wen, Ji-Rong},
+  booktitle =    {Research and Development in Information Retrieval},
+  pages =        {1033--1036},
+  year =         2019
 }
-@inproceedings{liu2018global,
-	title={Global for coarse and part for fine: A hierarchical action recognition framework},
-	author={Liu, Weiwei and Zhang, Chongyang and Zhang, Jiaying and Wu, Zhonghao},
-	booktitle={2018 25th IEEE International Conference on Image Processing (ICIP)},
-	pages={2630--2634},
-	year={2018},
-	organization={IEEE}
+
+@inproceedings{iacobacci2016embeddings,
+  title =        {Embeddings for word sense disambiguation: An
+                  evaluation study},
+  author =       {Iacobacci, Ignacio and Pilehvar, Mohammad Taher and
+                  Navigli, Roberto},
+  booktitle =    {Annual Meeting of the Association for Computational
+                  Linguistics},
+  volume =       1,
+  pages =        {897--907},
+  year =         2016
 }
+
+@inproceedings{ishiwatari2019learning,
+  title =        {Learning to describe unknown phrases with local and
+                  global contexts},
+  author =       {Ishiwatari, Shonosuke and Hayashi, Hiroaki and
+                  Yoshinaga, Naoki and Neubig, Graham and Sato,
+                  Shoetsu and Toyoda, Masashi and Kitsuregawa, Masaru},
+  booktitle =    {Human Language Technologies},
+  organization = {NAACL},
+  volume =       1,
+  pages =        {3467--3476},
+  year =         2019
+}
+
+@inproceedings{jarvelin2017ir,
+  title =        {IR evaluation methods for retrieving highly relevant
+                  documents},
+  author =       {J{\"a}rvelin, Kalervo and Kek{\"a}l{\"a}inen, Jaana},
+  booktitle =    {SIGIR Forum},
+  volume =       51,
+  number =       2,
+  pages =        {243--250},
+  year =         2017,
+  organization = {ACM}
+}
+
+@inproceedings{kahn2018self,
+  title =        {Self-supervised deep reinforcement learning with
+                  generalized computation graphs for robot navigation},
+  author =       {Kahn, Gregory and Villaflor, Adam and Ding, Bosen
+                  and Abbeel, Pieter and Levine, Sergey},
+  booktitle =    {International Conference on Robotics and Automation},
+  pages =        {1--8},
+  year =         2018,
+  organization = {IEEE}
+}
+
+@misc{keith1991euphemism,
+  title =        {Euphemism and dysphemism: language used as shield
+                  and weapon},
+  author =       {Keith, Allan and Burridge, Kate},
+  year =         1991,
+  publisher =    {Oxford: Oxford University Press}
+}
+
+@inproceedings{kim2014convolutional,
+  title =        {Convolutional Neural Networks for Sentence
+                  Classification},
+  author =       {Kim, Yoon},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {1746--1751},
+  year =         2014
+}
+
+@inproceedings{kiros2015skip,
+  title =        {Skip-thought vectors},
+  author =       {Kiros, Ryan and Zhu, Yukun and Salakhutdinov, Russ R
+                  and Zemel, Richard and Urtasun, Raquel and Torralba,
+                  Antonio and Fidler, Sanja},
+  booktitle =    {Advances in neural information processing systems},
+  pages =        {3294--3302},
+  year =         2015
+}
+
+@book{kleinbaum2002logistic,
+  title =        {Logistic regression},
+  author =       {Kleinbaum, David G and Dietz, K and Gail, M and
+                  Klein, Mitchel and Klein, Mitchell},
+  year =         2002,
+  publisher =    {Springer}
+}
+
+@inproceedings{kolesnikov2019revisiting,
+  title =        {Revisiting self-supervised visual representation
+                  learning},
+  author =       {Kolesnikov, Alexander and Zhai, Xiaohua and Beyer,
+                  Lucas},
+  booktitle =    {Computer Vision and Pattern Recognition},
+  pages =        {1920--1929},
+  year =         2019,
+  organization = {IEEE},
+}
+
+@inproceedings{lafferty2001conditional,
+  title =        {Conditional Random Fields: Probabilistic Models for
+                  Segmenting and Labeling Sequence Data},
+  author =       {Lafferty, John D and McCallum, Andrew and Pereira,
+                  Fernando CN},
+  booktitle =    {International Conference on Machine Learning},
+  pages =        {282--289},
+  year =         2001
+}
+
+@inproceedings{lai2015recurrent,
+  title =        {Recurrent convolutional neural networks for text
+                  classification},
+  author =       {Lai, Siwei and Xu, Liheng and Liu, Kang and Zhao,
+                  Jun},
+  booktitle =    {Conference on Artificial Intelligence},
+  organization = {AAAI},
+  year =         2015
+}
+
+@inproceedings{lan2019albert,
+  title =        {ALBERT: A Lite BERT for Self-supervised Learning of
+                  Language Representations},
+  author =       {Lan, Zhenzhong and Chen, Mingda and Goodman,
+                  Sebastian and Gimpel, Kevin and Sharma, Piyush and
+                  Soricut, Radu},
+  booktitle =    {International Conference on Learning
+                  Representations},
+  year =         2019
+}
+
+@inproceedings{leontiadis2011measuring,
+  title =        {Measuring and Analyzing Search-Redirection Attacks
+                  in the Illicit Online Prescription Drug Trade.},
+  author =       {Leontiadis, Nektarios and Moore, Tyler and Christin,
+                  Nicolas},
+  booktitle =    {USENIX Security Symposium},
+  volume =       11,
+  year =         2011
+}
+
+@inproceedings{levy2014dependency,
+  title =        {Dependency-based word embeddings},
+  author =       {Levy, Omer and Goldberg, Yoav},
+  booktitle =    {Annual Meeting of the Association for Computational
+                  Linguistics},
+  volume =       2,
+  pages =        {302--308},
+  year =         2014
+}
+
+@misc{lewis2019bart,
+  title =        {{BART: Denoising Sequence-to-Sequence Pre-training
+                  for Natural Language Generation, Translation, and
+                  Comprehension}},
+  author =       {Lewis, Mike and Liu, Yinhan and Goyal, Naman and
+                  Ghazvininejad, Marjan and Mohamed, Abdelrahman and
+                  Levy, Omer and Stoyanov, Ves and Zettlemoyer, Luke},
+  howpublished = {\href{https://arxiv.org/abs/1910.13461}{arXiv:1910.13461} [cs.CL]},
+  year =         2019
+}
+
 @inproceedings{li2019exploiting,
-	title={Exploiting coarse-to-fine task transfer for aspect-level sentiment classification},
-	author={Li, Zheng and Wei, Ying and Zhang, Yu and Zhang, Xiang and Li, Xin},
-	booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-	volume={33},
-	pages={4253--4260},
-	year={2019}
+  title =        {Exploiting coarse-to-fine task transfer for
+                  aspect-level sentiment classification},
+  author =       {Li, Zheng and Wei, Ying and Zhang, Yu and Zhang,
+                  Xiang and Li, Xin},
+  booktitle =    {Conference on Artificial Intelligence},
+  organization = {AAAI},
+  volume =       33,
+  pages =        {4253--4260},
+  year =         2019
 }
-@article{blackie1996:scunthorpe,
-    title={{AOL censors British town's name!}},
-    author={Doug Blackie},
-    journal={Computer underground digest},
-    volume=8,
-    issue=29,
-    issn={1004-042X},
-    year=1996,
-    month={April},
-    note={As abstracted in RISKS Digest 18.07},
-    url={http://catless.ncl.ac.uk/Risks/18.07.html#subj3}
+
+@misc{lin2017structured,
+  title =        {A structured self-attentive sentence embedding},
+  author =       {Lin, Zhouhan and Feng, Minwei and Santos, Cicero
+                  Nogueira dos and Yu, Mo and Xiang, Bing and Zhou,
+                  Bowen and Bengio, Yoshua},
+  howpublished = {\href{https://arxiv.org/abs/1703.03130}{arXiv:1703.03130} [cs.CL]},
+  year =         2017
 }
+
+@inproceedings{liu2018empower,
+  title =        {Empower sequence labeling with task-aware neural
+                  language model},
+  author =       {Liu, Liyuan and Shang, Jingbo and Ren, Xiang and Xu,
+                  Frank F and Gui, Huan and Peng, Jian and Han,
+                  Jiawei},
+  booktitle =    {Conference on Artificial Intelligence},
+  pages =        {5253--5260},
+  year =         2018,
+  organization = {AAAI}
+}
+
+@inproceedings{liu2018global,
+  title =        {Global for coarse and part for fine: A hierarchical
+                  action recognition framework},
+  author =       {Liu, Weiwei and Zhang, Chongyang and Zhang, Jiaying
+                  and Wu, Zhonghao},
+  booktitle =    {International Conference on Image Processing},
+  pages =        {2630--2634},
+  year =         2018,
+  organization = {IEEE}
+}
+
+@misc{liu2019roberta,
+  title =        {Roberta: A robustly optimized bert pretraining
+                  approach},
+  author =       {Liu, Yinhan and Ott, Myle and Goyal, Naman and Du,
+                  Jingfei and Joshi, Mandar and Chen, Danqi and Levy,
+                  Omer and Lewis, Mike and Zettlemoyer, Luke and
+                  Stoyanov, Veselin},
+  howpublished = {\href{https://arxiv.org/abs/1907.11692}{arXiv:1907.11692} [cs.CL]},
+  year =         2019
+}
+
+@inproceedings{magu2018determining,
+  title =        {Determining code words in euphemistic hate speech
+                  using word embedding networks},
+  author =       {Magu, Rijul and Luo, Jiebo},
+  booktitle =    {Workshop on Abusive Language Online},
+  pages =        {93--100},
+  year =         2018
+}
+
+@book{manning2008introduction,
+  title =        {Introduction to information retrieval},
+  author =       {Manning, Christopher D and Sch{\"u}tze, Hinrich and
+                  Raghavan, Prabhakar},
+  year =         2008,
+  publisher =    {Cambridge university press}
+}
+
+@inproceedings{mao2020octet,
+  title =        {Octet: Online Catalog Taxonomy Enrichment with
+                  Self-Supervision},
+  author =       {Mao, Yuning and Zhao, Tong and Kan, Andrey and
+                  Zhang, Chenwei and Dong, Xin Luna and Faloutsos,
+                  Christos and Han, Jiawei},
+  booktitle =    {Knowledge Discovery \& Data Mining},
+  organization = {ACM},
+  pages =        {2247--2257},
+  year =         2020
+}
+
+@inproceedings{mccoy2012pharmaleaks,
+  title =        {Pharmaleaks: Understanding the business of online
+                  pharmaceutical affiliate programs},
+  author =       {McCoy, Damon and Pitsillidis, Andreas and Grant,
+                  Jordan and Weaver, Nicholas and Kreibich, Christian
+                  and Krebs, Brian and Voelker, Geoffrey and Savage,
+                  Stefan and Levchenko, Kirill},
+  booktitle =    {USENIX Security Symposium},
+  pages =        {1--16},
+  year =         2012
+}
+
+@inproceedings{mees2019self,
+  title =        {Self-supervised 3D Shape and Viewpoint Estimation
+                  from Single Images for Robotics},
+  author =       {Mees, Oier and Tatarchenko, Maxim and Brox, Thomas
+                  and Burgard, Wolfram},
+  booktitle =    {Intelligent Robots and Systems},
+  pages =        {6083--6089},
+  year =         2019,
+  organization = {IEEE}
+}
+
+@inproceedings{mikolov2013distributed,
+  title =        {Distributed representations of words and phrases and
+                  their compositionality},
+  author =       {Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and
+                  Corrado, Greg S and Dean, Jeff},
+  booktitle =    {Advances in neural information processing systems},
+  pages =        {3111--3119},
+  year =         2013
+}
+
+@misc{mikolov2013efficient,
+  title =        {Efficient estimation of word representations in
+                  vector space},
+  author =       {Mikolov, Tomas and Chen, Kai and Corrado, Greg and
+                  Dean, Jeffrey},
+  howpublished = {\href{https://arxiv.org/abs/1301.3781}{arXiv:1301.3781} [cs.CL]},
+  year =         2013
+}
+
+@inproceedings{nair2017combining,
+  title =        {Combining self-supervised learning and imitation for
+                  vision-based rope manipulation},
+  author =       {Nair, Ashvin and Chen, Dian and Agrawal, Pulkit and
+                  Isola, Phillip and Abbeel, Pieter and Malik,
+                  Jitendra and Levine, Sergey},
+  booktitle =    {International Conference on Robotics and Automation},
+  pages =        {2146--2153},
+  year =         2017,
+  organization = {IEEE}
+}
+
+@inproceedings{nan2015uipicker,
+  title =        {Uipicker: User-input privacy identification in
+                  mobile applications},
+  author =       {Nan, Yuhong and Yang, Min and Yang, Zhemin and Zhou,
+                  Shunfan and Gu, Guofei and Wang, XiaoFeng},
+  booktitle =    {USENIX Security Symposium},
+  pages =        {993--1008},
+  year =         2015
+}
+
+@article{newton2019terror,
+  title =        {The terror queue},
+  author =       {Casey Newton},
+  journal =      {The Verge},
+  year =         2019,
+  month =        dec,
+  url =          {https://www.theverge.com/2019/12/16/21021005/google-youtube-moderators-ptsd-accenture-violent-disturbing-content-interviews-video}
+}
+
+@article{newton2019trauma,
+  title =        {The trauma floor: The secret lives of {Facebook}
+                  moderators in {America}},
+  author =       {Casey Newton},
+  journal =      {The Verge},
+  year =         2019,
+  month =        feb,
+  url =          {https://www.theverge.com/2019/2/25/18229714/cognizant-facebook-content-moderator-interviews-trauma-working-conditions-arizona}
+}
+
+@inproceedings{ni2017learning,
+  title =        {Learning to Explain Non-Standard English Words and
+                  Phrases},
+  author =       {Ni, Ke and Wang, William Yang},
+  booktitle =    {International Joint Conference on Natural Language
+                  Processing},
+  volume =       2,
+  pages =        {413--417},
+  year =         2017
+}
+
+@misc{ofcom:ai2019,
+  title =        {Use of {AI} in online content moderation},
+  author =       {{Cambridge Consultants}},
+  howpublished = {Ofcom report},
+  year =         2019,
+  url =          {https://www.ofcom.org.uk/__data/assets/pdf_file/0028/157249/cambridge-consultants-ai-content-moderation.pdf}
+}
+
+@techreport{page1999pagerank,
+  title =        {The PageRank citation ranking: Bringing order to the
+                  web.},
+  author =       {Page, Lawrence and Brin, Sergey and Motwani, Rajeev
+                  and Winograd, Terry},
+  year =         1999,
+  institution =  {Stanford InfoLab}
+}
+
+@inproceedings{pei2019slang,
+  title =        {Slang detection and identification},
+  author =       {Pei, Zhengqi and Sun, Zhewei and Xu, Yang},
+  booktitle =    {Computational Natural Language Learning},
+  pages =        {881--889},
+  year =         2019
+}
+
 @inproceedings{pennington2014glove,
-	title={Glove: Global vectors for word representation},
-	author={Pennington, Jeffrey and Socher, Richard and Manning, Christopher D},
-	booktitle={Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)},
-	pages={1532--1543},
-	year={2014}
+  title =        {Glove: Global vectors for word representation},
+  author =       {Pennington, Jeffrey and Socher, Richard and Manning,
+                  Christopher D},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {1532--1543},
+  year =         2014
+}
+
+@article{pfaff1997metaphor,
+  title =        {Metaphor in using and understanding euphemism and
+                  dysphemism},
+  author =       {Pfaff, Kerry L and Gibbs, Raymond W and Johnson,
+                  Michael D},
+  journal =      {Applied Psycholinguistics},
+  volume =       18,
+  number =       1,
+  pages =        {59--83},
+  year =         1997,
+  publisher =    {Cambridge University Press}
+}
+
+@misc{pong2019skew,
+  title =        {Skew-fit: State-covering self-supervised
+                  reinforcement learning},
+  author =       {Pong, Vitchyr H and Dalal, Murtaza and Lin, Steven
+                  and Nair, Ashvin and Bahl, Shikhar and Levine,
+                  Sergey},
+  howpublished = {\href{https://arxiv.org/abs/1903.03698}{arXiv:1903.03698} [cs.CL]},
+  year =         2019
+}
+
+@inproceedings{portnoff2017tools,
+  title =        {Tools for automated analysis of cybercriminal
+                  markets},
+  author =       {Portnoff, Rebecca S and Afroz, Sadia and Durrett,
+                  Greg and Kummerfeld, Jonathan K and
+                  Berg-Kirkpatrick, Taylor and McCoy, Damon and
+                  Levchenko, Kirill and Paxson, Vern},
+  booktitle =    {The Web Conference},
+  pages =        {657--666},
+  year =         2017
+}
+
+@inproceedings{qian2019learning,
+  title =        {Learning to Decipher Hate Symbols},
+  author =       {Qian, Jing and ElSherief, Mai and Belding, Elizabeth
+                  and Wang, William Yang},
+  booktitle =    {Human Language Technologies},
+  volume =       1,
+  organization = {NAACL},
+  pages =        {3006--3015},
+  year =         2019
+}
+
+@article{rababah2014translatability,
+  title =        {The Translatability and Use of X-Phemism Expressions
+                  (X-phemization): Euphemisms, Dysphemisms and
+                  Orthophemisms) in the Medical Discourse},
+  author =       {Rababah, Hussein Abdo},
+  journal =      {Studies in literature and language},
+  volume =       9,
+  number =       3,
+  pages =        {229--240},
+  year =         2014
+}
+
+@inproceedings{raganato2017neural,
+  title =        {Neural sequence learning models for word sense
+                  disambiguation},
+  author =       {Raganato, Alessandro and Bovi, Claudio Delli and
+                  Navigli, Roberto},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {1156--1167},
+  year =         2017
+}
+
+@inproceedings{raganato2017word,
+  title =        {Word sense disambiguation: A unified evaluation
+                  framework and empirical comparison},
+  author =       {Raganato, Alessandro and Camacho-Collados, Jose and
+                  Navigli, Roberto},
+  booktitle =    {Conference of the European Chapter of the
+                  Association for Computational Linguistics},
+  volume =       1,
+  pages =        {99--110},
+  year =         2017
+}
+
+@book{rajaraman2011mining,
+  title =        {Mining of massive datasets},
+  author =       {Rajaraman, Anand and Ullman, Jeffrey David},
+  year =         2011,
+  publisher =    {Cambridge University Press}
+}
+
+@inproceedings{rauber2011kernel,
+  title =        {Kernel multilayer perceptron},
+  author =       {Rauber, Thomas and Berns, Karsten},
+  booktitle =    {Conference on Graphics, Patterns and Images},
+  pages =        {337--343},
+  year =         2011,
+  organization = {IEEE}
+}
+
+@inproceedings{rong2016egoset,
+  title =        {Egoset: Exploiting word ego-networks and
+                  user-generated ontology for multifaceted set
+                  expansion},
+  author =       {Rong, Xin and Chen, Zhe and Mei, Qiaozhu and Adar,
+                  Eytan},
+  booktitle =    {Web Search and Data Mining},
+  pages =        {645--654},
+  organization = {ACM},
+  year =         2016
+}
+
+@techreport{rumelhart1985learning,
+  title =        {Learning internal representations by error
+                  propagation},
+  author =       {Rumelhart, David E and Hinton, Geoffrey E and
+                  Williams, Ronald J},
+  year =         1985,
+  institution =  {California Univ San Diego La Jolla Inst for
+                  Cognitive Science}
+}
+
+@inproceedings{sabokrou2019self,
+  title =        {Self-supervised representation learning via
+                  neighborhood-relational encoding},
+  author =       {Sabokrou, Mohammad and Khalooei, Mohammad and Adeli,
+                  Ehsan},
+  booktitle =    {International Conference on Computer Vision},
+  organization = {IEEE},
+  pages =        {8010--8019},
+  year =         2019
+}
+
+@article{sedhai2017semi,
+  title =        {Semi-supervised spam detection in Twitter stream},
+  author =       {Sedhai, Surendra and Sun, Aixin},
+  journal =      {IEEE Transactions on Computational Social Systems},
+  volume =       5,
+  number =       1,
+  pages =        {169--175},
+  year =         2017,
+  publisher =    {IEEE}
+}
+
+@inproceedings{shang2020nettaxo,
+  title =        {Nettaxo: Automated topic taxonomy construction from
+                  text-rich network},
+  author =       {Shang, Jingbo and Zhang, Xinyang and Liu, Liyuan and
+                  Li, Sha and Han, Jiawei},
+  booktitle =    {The Web Conference 2020},
+  pages =        {1908--1919},
+  year =         2020
+}
+
+@inproceedings{shen2017setexpan,
+  title =        {Setexpan: Corpus-based set expansion via context
+                  feature selection and rank ensemble},
+  author =       {Shen, Jiaming and Wu, Zeqiu and Lei, Dongming and
+                  Shang, Jingbo and Ren, Xiang and Han, Jiawei},
+  booktitle =    {European Conference on Machine Learning},
+  pages =        {288--304},
+  year =         2017,
+  organization = {Springer}
+}
+
+@inproceedings{shen2020synsetexpan,
+  title =        {SynSetExpan: An Iterative Framework for Joint Entity
+                  Set Expansion and Synonym Discovery},
+  author =       {Shen, Jiaming and Qiu, Wenda and Shang, Jingbo and
+                  Vanni, Michelle and Ren, Xiang and Han, Jiawei},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {8292--8307},
+  year =         2020
+}
+
+@inproceedings{shen2020taxoexpan,
+  title =        {TaxoExpan: Self-supervised Taxonomy Expansion with
+                  Position-Enhanced Graph Neural Network},
+  author =       {Shen, Jiaming and Shen, Zhihong and Xiong, Chenyan
+                  and Wang, Chi and Wang, Kuansan and Han, Jiawei},
+  booktitle =    {The Web Conference},
+  pages =        {486--497},
+  year =         2020
+}
+
+@inproceedings{soska15markets,
+  author =       {K. Soska and N. Christin},
+  title =        {Measuring the Longitudinal Evolution of the Online
+                  Anonymous Marketplace Ecosystem},
+  booktitle =    {USENIX Security Symposium},
+  year =         2015,
+  month =        aug,
+  pages =        {33--48},
+  address =      {Washington, DC}
+}
+
+@book{spears1981slang,
+  title =        {Slang and euphemism},
+  author =       {Spears, Richard A},
+  year =         1981,
+  publisher =    {Signet Book}
+}
+
+@misc{sun2019unsupervised,
+  title =        {Unsupervised domain adaptation through
+                  self-supervision},
+  author =       {Sun, Yu and Tzeng, Eric and Darrell, Trevor and
+                  Efros, Alexei A},
+  howpublished = {\href{https://arxiv.org/abs/1909.11825}{arXiv:1909.11825} [cs.CL]},
+  year =         2019
+}
+
+@inproceedings{taghipour2015semi,
+  title =        {Semi-supervised word sense disambiguation using word
+                  embeddings in general and specific domains},
+  author =       {Taghipour, Kaveh and Ng, Hwee Tou},
+  booktitle =    {Human Language Technologies},
+  organization = {NAACL},
+  pages =        {314--323},
+  year =         2015
+}
+
+@inproceedings{takuro2020codewords,
+  title =        {Codewords Detection in Microblogs Focusing on
+                  Differences in Word Use Between Two Corpora},
+  author =       {Takuro, HADA and Yuichi, SEI and TAHARA, Yasuyuki
+                  and OHSUGA, Akihiko},
+  booktitle =    {International Conference on Computing, Electronics
+                  \& Communications Engineering},
+  pages =        {103--108},
+  year =         2020,
+  organization = {IEEE}
+}
+
+@misc{taylor2017surfacing,
+  title =        {Surfacing contextual hate speech words within social
+                  media},
+  author =       {Taylor, Jherez and Peignon, Melvyn and Chen,
+                  Yi-Shin},
+  howpublished = {\href{https://arxiv.org/abs/1711.10093}{arXiv:1711.10093} [cs.CL]},
+  year =         2017
+}
+
+@inproceedings{thomas2013trafficking,
+  title =        {Trafficking fraudulent accounts: The role of the
+                  underground market in Twitter spam and abuse},
+  author =       {Thomas, Kurt and McCoy, Damon and Grier, Chris and
+                  Kolcz, Alek and Paxson, Vern},
+  booktitle =    {USENIX Security Symposium},
+  pages =        {195--210},
+  year =         2013
+}
+
+@inproceedings{wang2016attention,
+  title =        {Attention-based LSTM for aspect-level sentiment
+                  classification},
+  author =       {Wang, Yequan and Huang, Minlie and Zhu, Xiaoyan and
+                  Zhao, Li},
+  booktitle =    {Empirical Methods in Natural Language Processing},
+  pages =        {606--615},
+  year =         2016
+}
+
+@article{weng2019selfsup,
+  title =        {Self-Supervised Representation Learning},
+  author =       {Weng, Lilian},
+  journal =      {lilianweng.github.io/lil-log},
+  year =         2019,
+  url =          {https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html}
+}
+
+@inproceedings{wu2017twitter,
+  title =        {Twitter spam detection based on deep learning},
+  author =       {Wu, Tingmin and Liu, Shigang and Zhang, Jun and
+                  Xiang, Yang},
+  booktitle =    {Australasian Computer Science Week Multiconference},
+  pages =        {1--8},
+  year =         2017
+}
+
+@article{wu2018twitter,
+  title =        {Twitter spam detection: Survey of new approaches and
+                  comparative study},
+  author =       {Wu, Tingmin and Wen, Sheng and Xiang, Yang and Zhou,
+                  Wanlei},
+  journal =      {Computers \& Security},
+  volume =       76,
+  pages =        {265--284},
+  year =         2018,
+  publisher =    {Elsevier}
+}
+
+@article{xu2019self,
+  title =        {Self-supervised domain adaptation for computer
+                  vision tasks},
+  author =       {Xu, Jiaolong and Xiao, Liang and L{\'o}pez, Antonio
+                  M},
+  journal =      {IEEE Access},
+  volume =       7,
+  pages =        {156694--156706},
+  year =         2019,
+  publisher =    {IEEE}
+}
+
+@inproceedings{yang2017learn,
+  title =        {How to learn klingon without a dictionary: Detection
+                  and measurement of black keywords used by the
+                  underground economy},
+  author =       {Yang, Hao and Ma, Xiulin and Du, Kun and Li, Zhou
+                  and Duan, Haixin and Su, Xiaodong and Liu, Guang and
+                  Geng, Zhifeng and Wu, Jianping},
+  booktitle =    {Symposium on Security and Privacy},
+  pages =        {751--769},
+  year =         2017,
+  organization = {IEEE}
+}
+
+@inproceedings{yang2020co,
+  title =        {Co-embedding network nodes and hierarchical labels
+                  with taxonomy based generative adversarial networks},
+  author =       {Yang, Carl and Zhang, Jieyu and Han, Jiawei},
+  booktitle =    {International Conference on Data Mining},
+  organization = {IEEE},
+  year =         2020
+}
+
+@inproceedings{yin2020dreaming,
+  title =        {Dreaming to distill: Data-free knowledge transfer
+                  via DeepInversion},
+  author =       {Yin, Hongxu and Molchanov, Pavlo and Alvarez, Jose M
+                  and Li, Zhizhong and Mallya, Arun and Hoiem, Derek
+                  and Jha, Niraj K and Kautz, Jan},
+  booktitle =    {Computer Vision and Pattern Recognition},
+  organization = {IEEE/CVF},
+  pages =        {8715--8724},
+  year =         2020
+}
+
+@inproceedings{yuan2018reading,
+  title =        {Reading Thieves' cant: automatically identifying and
+                  understanding dark jargons from cybercrime
+                  marketplaces},
+  author =       {Yuan, Kan and Lu, Haoran and Liao, Xiaojing and
+                  Wang, XiaoFeng},
+  booktitle =    {USENIX Security Symposium},
+  pages =        {1027--1041},
+  year =         2018
+}
+
+@inproceedings{zannettou2018gab,
+  title =        {What is gab: A bastion of free speech or an
+                  alt-right echo chamber},
+  author =       {Zannettou, Savvas and Bradlyn, Barry and De
+                  Cristofaro, Emiliano and Kwak, Haewoon and
+                  Sirivianos, Michael and Stringini, Gianluca and
+                  Blackburn, Jeremy},
+  booktitle =    {The Web Conference},
+  pages =        {1007--1014},
+  year =         2018
+}
+
+@inproceedings{zeng2018learning,
+  title =        {Learning synergies between pushing and grasping with
+                  self-supervised deep reinforcement learning},
+  author =       {Zeng, Andy and Song, Shuran and Welker, Stefan and
+                  Lee, Johnny and Rodriguez, Alberto and Funkhouser,
+                  Thomas},
+  booktitle =    {Intelligent Robots and Systems},
+  pages =        {4238--4245},
+  year =         2018,
+  organization = {IEEE}
+}
+
+@inproceedings{zhai2019s4l,
+  title =        {S4l: Self-supervised semi-supervised learning},
+  author =       {Zhai, Xiaohua and Oliver, Avital and Kolesnikov,
+                  Alexander and Beyer, Lucas},
+  booktitle =    {International Conference on Computer Vision},
+  pages =        {1476--1485},
+  organization = {IEEE},
+  year =         2019
+}
+
+@article{zhang2018taxogen,
+  title =        {Taxogen: Constructing topical concept taxonomy by
+                  adaptive term embedding and clustering},
+  author =       {Zhang, Chao and Tao, Fangbo and Chen, Xiusi and
+                  Shen, Jiaming and Jiang, Meng and Sadler, Brian and
+                  Vanni, Michelle and Han, Jiawei},
+  booktitle =    {Knowledge Discovery \& Data Mining},
+  organization = {ACM},
+  year =         2018
+}
+
+@inproceedings{zhang2020empower,
+  title =        {Empower Entity Set Expansion via Language Model
+                  Probing},
+  author =       {Zhang, Yunyi and Shen, Jiaming and Shang, Jingbo and
+                  Han, Jiawei},
+  booktitle =    {Annual Meeting of the Association for Computational
+                  Linguistics},
+  year =         2020
+}
+
+@inproceedings{zhang2020pegasus,
+  title =        {Pegasus: Pre-training with extracted gap-sentences
+                  for abstractive summarization},
+  author =       {Zhang, Jingqing and Zhao, Yao and Saleh, Mohammad
+                  and Liu, Peter},
+  booktitle =    {International Conference on Machine Learning},
+  pages =        {11328--11339},
+  year =         2020,
+  organization = {PMLR}
+}
+
+@inproceedings{zhao2016chinese,
+  title =        {Chinese underground market jargon analysis based on
+                  unsupervised learning},
+  author =       {Zhao, Kangzhi and Zhang, Yong and Xing, Chunxiao and
+                  Li, Weifeng and Chen, Hsinchun},
+  booktitle =    {Intelligence and Security Informatics},
+  pages =        {97--102},
+  year =         2016,
+  organization = {IEEE}
+}
+
+@inproceedings{zhu2019fuse,
+  title =        {FUSE: Multi-faceted set expansion by coherent
+                  clustering of skip-grams},
+  author =       {Zhu, Wanzheng and Gong, Hongyu and Shen, Jiaming and
+                  Zhang, Chao and Shang, Jingbo and Bhat, Suma and
+                  Han, Jiawei},
+  booktitle =    {European Conference on Machine Learning},
+  year =         2020
 }
